@@ -1,0 +1,418 @@
+\documentclass[a4j,12pt]{jarticle}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\begin{document}
+
+\title{Theoretical Statistics}
+\author{伴 尚哉\thanks{\texttt{naoyayg30@keio.jp}}\\61715382\\慶應義塾大学理工学部数理科学科 白石研究室}
+\date{\today}
+\maketitle
+
+\section{Probability and Measure}
+\ 多くの統計的理論は、確率・測度論をよく理解していなくとも理解できるであろう。この本も、確率・測度論を細かいところまで扱ってはいない。しかし、先の分野のいくつかの基礎知識はとても役に立つのである。統計学に出てくる文献の多くに測度論は使われていて、基礎知識のない人々には利用しにくいのだ。また、測度論の表記法のおかげで、我々は離散的な確率変数と連続的な確率変数を同じ事項として扱えるのだ。加えて、離散的でも連続的でもないといった興味深い確率変数の動きを追うのに必要なことも、測度論の表記法のおかげで我々は扱えるのである。つまり、測度論は、多くのことを正しく表記するのに必要なのである。結局、本書は、証明の中で測度論の細かな部分は省かれているものの、確率論に博識な人が行間を埋めるくらいには丁寧に書かれてはいるのだ。
+$\\ $
+\ この章では、確率・測度論を紹介していて、また、いくつかのよく使われる事実については証明なしで記載されている。
+
+\subsection{測度論}
+\ 集合$\mathcal{X}$上の測度$\mu$とは、$\mathcal{X}$に含まれる部分集合$A$に対しての非負値$\mu(A)$のことである。以下に２つ例を挙げる。
+\begin{enumerate}[label = 例 1.\arabic* .]
+\item $\mathcal{X}$が可算集合と仮定する。このとき、$\mathcal{X}$上の数え上げ測度を以下で定義する。
+\begin{align}
+\label{a}
+\mu(A) = |A| = Aの元の個数
+\end{align}
+\newpage
+\item $\mathcal{X} = \mathbb{R}$とする。$\mu(A)$を
+\begin{align}
+\label{b}
+\mu(A) = \int_{A} \cdots \int_{A} dx_{1} \cdots dx_{n}.
+\end{align}
+と定めたとき、n=1,2,3の下では$\mu(A)$は各々長さ、面積、体積と呼ばれる。また一般的に、上で定義した$\mu$は$\mathbb{R}$上でのルベーグ測度と呼ばれる。
+実際、いくつかの集合では、式(\ref{b})で定義した$\mu(A)$の値を求める方法が明らかではない。そこで以下我々が示すように、測度論の定理が積分学の根本的な問題に根強くかかわってくるのである。
+\end{enumerate}
+$\\ $
+\ 先ほどの例で挙げられた測度は、ある意味それぞれ異なっている。数え上げ測度は、一意の点の個数を測ってた。つまり、$\mu(\{x\}) = 1 \; (\forall x \in \mathcal{X})$である。
+一方、ルベーグ測度では、$\mu(\{x\}) = 1$となるような点はない。一般的に、もし$\mu(\{x\}) > 0 $ならば、xは$\mu(\{x\}) > 0$な元と呼ばれる。
+$\\ $
+$\\ $
+\ 普通、$\mathcal{X}$のすべての部分集合$A$にたいして、測度を計算するのは不可能である。その代わり、測度$\mu$に対する領域 -"$\sigma-加法族$"を用意する。
+
+\begin{enumerate}[label = 定義1.\arabic*.]
+\setcounter{enumi}{2}
+\item $A$を部分集合、$\mathcal{A}$を集合$\mathcal{X}$の集合族と仮定する。以下が成り立つとき、$\mathcal{A}$を$\sigma-加法族$と呼ぶ。
+\begin{enumerate}
+\item $\mathcal{X} \in \mathcal{A} \:  and  \: \phi \in \mathcal{A}.$
+\item $ A \in \mathcal{A} \Rightarrow \mathcal{A}^{c} = \mathcal{X} - A \in \mathcal{A}$
+\item $ A_{1},A_{2},\dots \in \mathcal{A} \Rightarrow \displaystyle\bigcup_{i = 1}^{\infty}A_{i} \in \mathcal{A}$
+\end{enumerate}
+\end{enumerate}
+以上で定義したことは、集合関数$\mu$が測度と呼ばれるためには必ず満たさなければならない基本的項目である。例(\ref{a},\ref{b})でもこれらの項目は直観的であろう。
+\begin{enumerate}[label = 定義1.\arabic*.]
+\setcounter{enumi}{3}
+\item 以下を満たすとき、$\sigma-加法族\mathcal{A}$上の関数$\mu$が測度であるという。
+\begin{enumerate}
+\item $\forall A \in \mathcal{A}, 0 \leq \mu(A) \leq \infty$
+\item $A_{1},A_{2},\cdots \in \mathcal{A},\; A_{i} \cap A_{j} = \phi \; (\forall i \neq j) \; \Rightarrow \; \mu(\displaystyle\bigcup_{i=1}^{\infty}A_{i}) = \sum_{i=1}^{\infty} \mu(A_{i})$
+\end{enumerate}
+\end{enumerate}
+ここで、上で定義したことについての興味深くまた有用な結果として以下のことが言える。$\\ $
+\ 可算集合$B_{n}\; (n \leq 1)$が、単調増加且つ $B = \displaystyle\bigcup_{n = 1}^{\infty}B_{n}$を仮定する。
+\begin{align}
+\label{c}
+\mu(B) = \lim_{x \rightarrow \infty} \mu(B_{n})
+\end{align}
+これは、測度が連続といった特徴だと捉えられる。
+\newpage
+\ $\mathcal{A}$が集合$\mathcal{X}$の$\sigma-加法族$のとき、$(\mathcal{X},\mathcal{A})$を可測空間と呼ぶ。また、$\mu$を$\mathcal{A}$の測度としたとき、$(\mathcal{X},\mathcal{A},\mu)$を測度空間と呼ぶ。$\\ $
+\ また、測度$\mu$が有限であるとは、$\mu(\mathcal{X}) < \infty \; \land \; \mu(A_{i}) < \infty \: (\forall i \in \mathbb{N} \; \land \; \displaystyle\bigcup_{i=1}^{\infty}A_{i} = \mathcal{X})$を満たす時である。本書では、測度はすべて有限であると仮定する。 $\\ $
+\ また、測度$\mu$が確率測度であるとは$\mu(\mathcal{X}) = 1$を満たすときであり、その時は測度空間のことを確率空間と呼ぶ。確率測度や有限測度では、式(\ref{c})を単調減少な集合に対して類推すると以下のことが成り立つ。$\\ $
+\ 可測集合$B_{i} \; (i \in \mathbb{N})$が単調減少で、$ B = \displaystyle\bigcap_{i=1}^{\infty}B_{n}$を満たしているとき、
+\begin{align*}
+\mu(B) = \lim_{n \rightarrow \infty} \mu(B_{n})
+\end{align*}
+となる。$\\ $
+\ 例(1.\ref{a})の時を考える。数え上げ測度は、$\mathcal{X}$のどんな部分集合に対しても定義することができる。よって、$\sigma-加法族\mathcal{A}$は、$\mathcal{X}$のすべての部分集合を集めたものになる。この$\sigma-加法族$は$\mathcal{X}$のべき集合と呼ばれ、$\mathcal{A} = 2^{\mathcal{X}}$と定義される。$\\ $
+\ 例(1.\ref{b})の時を考える。集合$A$のルベーグ測度は、暗黙の了解で、$\mathcal{A}$が$\mathbb{R}^{n}$のBorel集合族の時は定義される。正式には、$\mathcal{A}$はすべての矩形を含む最小の$\sigma-加法族$である。矩形の定義は以下である。
+\begin{align*}
+(a_{1},b_{1})×(a_{2},b_{2})×\cdots×(a_{n},b_{n}) = \{x \in \mathbb{R^{n}}\; :\; a_{i} < x_{i} < b_{i},\; i = 1,2,\cdots \}
+\end{align*}
+\ しかし、ボレル集合族ではない集合族はたくさんあるものの一つとして細かく定義できるものはない。
+\subsection{積分}
+\ この章の目標は、測度$\mu$に対して性質の良い関数$f$の積分を適切に定義することである。積分は、必要に応じて$\int f d\mu \;  or \; \int f(x) d\mu(x)$といった表記で書かれる。この後の発展のために、数え上げ測度とルベーグ測度についての積分を述べる。
+\begin{enumerate}[label = 例1.\arabic*]
+\setcounter{enumi}{4}
+\item \label{f} $\mu$が$\mathcal{X}$上の数え上げ測度とする。このとき$\mu$に対する関数$f$の積分は以下で定義される。
+\begin{align*}
+\int f d\mu = \sum_{x \in \mathcal{X}} f(x).
+\end{align*}
+\item $\mu$が$\mathbb{R}^{n}$上のルベーグ測度であるとする。このとき$\mu$に対する関数$f$の積分は以下で定義される。
+\begin{align*}
+\int f d\mu = \int \cdots \int f(x_{1},\cdots,x_{n})dx_{1} \cdots dx_{n}.
+\end{align*}
+\end{enumerate}
+\newpage
+\ ここで挙げられている現代の積分の定義は、ほとんどの基本的な微積分の授業で与えられている定義だ。積分は、性質の良い関数$f$は$\int f d\mu$が一意的でなければならないという主張のもとに構成されている。積分学の規則のポイントとして、以下の定義で挙げられるような"可測である"というのがある。
+\begin{enumerate}[label = 定義1.\arabic*]
+\setcounter{enumi}{6}
+\item $(\mathcal{X},\mathcal{A})$が可測空間であるとし、$\mathcal{X}$上の関数$f$が実数値のみを取るものとする。このとき、$f$が可測であるとは、すべてのボレル集合$B$に対して、
+\begin{align*}
+f^{-1}(B) \stackrel{\mathrm{def}}{=} \{x \in \mathcal{X} \; : \; f(x) \in B \} \in \mathcal{A}
+\end{align*}
+が成り立つことである。
+\end{enumerate}
+\ 可測でない関数は多く存在するものの、それらを明確に表記することはできない。連続関数や、区分連続関数は可測である。もっと興味深い例として、$f:\mathbb{R} \rightarrow \mathbb{R}$
+に対して、$f(x) = 1 \; (x \in (0,1)) \; and \; f(x) = 0\; (x \notin (0,1))$とすると、$f$は可測である。基礎の微積分学で使われるようなリーマン積分は、このような可測関数$f$に対して$\int f(x)dx$を定義できない。ここで紹介されるより一般的な方法では、$\int f(x)dx = 1$といった整数値を返す。結局、興味のある関数というのは一般的に可測であることを想定されているのだ。$\\ $
+\ 集合$A$に対する支持関数$1_{A}$とは以下で定義される関数のことである。
+\begin{align*}
+1_{A}(x) = I\{x \in A\} = \begin{cases} 1,\;x \in A; \\ 0,\; x \notin A. \end{cases}
+\end{align*}
+以下に、積分の基本的な性質を述べる。
+\begin{enumerate}
+\item どんな$A \in \mathcal{A}$についても、$\int 1_{A}d\mu = \mu(A)$である。
+\item もし、$f・g$共に非負可測関数であるなら、正の定数$a・b$にたいして、
+\begin{align}
+\label{e}
+\int (af+bg) d\mu = a \int f d\mu + b \int g d\mu.
+\end{align}
+が成り立つ。
+\item $f_{1} \leq f_{2} \leq \cdots $となる$f_{i}$が$\forall i \in \mathbf{N}$で非負可測関数かつ、$f(x) = \displaystyle \lim_{n \rightarrow \infty} f_{n}(x)$であるとすると
+\begin{align*}
+\int f d\mu = \lim_{n \rightarrow \infty} \int f_{n}(x) d\mu.
+\end{align*}
+が成り立つ。
+\end{enumerate}
+\ 上記の特徴の一つ目は$\int f d\mu$と測度$\mu$を連携させている。二つ目は、線形性についてを述べている。三つめは、極限を取るときに使えるものである。$\\ $
+\ 最初の二つの特徴を使うと、$a_{1},\ldots,a_{m}$を正の定数として、$A_{1},\ldots,A_{m}$を$\mathcal{A}$の集合としたとき以下が成り立つ。
+\begin{align*}
+\int \left(\sum_{i = 1}^{m} a_{i}1_{A_{i}}\right)d\mu = \sum_{i=1}^{m}a_{i}\mu(A_{i})
+\end{align*}
+が成り立つ。このような形の関数を単関数と呼ぶ。本書図1.1では、$1_{(1/2,\pi)} + 2*1_{(1,2)}$と定義される単関数のグラフが示されている。以下の結果は非負可測関数なら、単関数で書けることを表している。
+\begin{enumerate}[label = 定理1.\arabic*]
+\setcounter{enumi}{7}
+\item 関数$f$が非負可測であるとすると、$f_{1} \leq f_{2} \leq \ldots$且つ$f = \displaystyle \lim_{n \rightarrow \infty} f_{n}$を満たす単関数$f_{n}$が存在する。
+\end{enumerate}
+\ 極限に関わる積分の特徴と関係のあるこの定理のおかげで、原理上我々は多くの非負可測関数$f$の積分をすることができるのだ。また、特徴的な結果として、上記を満たす単関数を別々に取ってきても、積分の結果は一致する。
+ここで、一般の可測関数についても積分するために関数$f$の正部分と負部分を以下のように定義する。
+\begin{align}
+f^{+}(x) = max\{f(x),0\} \; f^{-}(x) = max\{-f(x),0\}
+\end{align}
+\ このとき、$f^{+}$と$f^{-}$はどちらも非負可測であり、$f = f^{+} - f^{-}$と書ける。$f$の積分は正部分の積分と負部分の積分、相違となる。
+この相違は、正部分と負部分の積分がどちらも正の無限に発散する時、あいまいなものとなる。なので、正部分の積分と負部分の積分のどちらかが発散しない時、$f$の積分を以下のように定義する。
+\begin{align*}
+\int f d\mu = \int f^{+} d\mu - \int f^{-} d\mu
+\end{align*}
+これは、$\int f d\mu = \infty$とならない時、積分の線形性の式(\ref{e})を使っている。また、$|f| = f^{+} + f^{-}$より、以上の定義によって、以下の条件を満たすときのみ$\int f d\mu$は有限値を与えられる。
+\begin{align*}
+\int f^{+} d\mu + \int f^{-}d\mu = \int |f| d\mu < \infty
+\end{align*}
+\ また、以上の条件を満たすとき、$f$は積分可能と呼ばれる。
+\newpage
+\subsection{事象・確率・確率変数}
+\ $P$を可測空間$(\varepsilon,\mathcal{B})$上の確率測度とする。つまり、$(\varepsilon,\mathcal{B},P)$は確率空間となる。$\mathcal{B}$の集合$B$を事象と呼び、$\varepsilon$の元$e$を結果と呼ぶ。
+そして、$P(B)$を$B$の確率と呼ぶ。$\\ $
+\ 可測関数$X \; : \; \varepsilon \rightarrow \mathbb{R}$を確率変数と呼ぶ。ボレル集合$A$に対して、確率測度$P_{X}$は以下のように定義され、$X$の分布と呼ばれる。。
+\begin{align*}
+P_{X}(A) = P(\{e \in \varepsilon \; : \; X(e) \in A\}) \stackrel{\mathrm{def}}{=} P(X \in A)
+\end{align*}
+また、$X$が分布$Q$を持つとは以下の通りに書かれる。
+\begin{align*}
+X \sim Q
+\end{align*}
+\ $X$の累積分布関数は$x \in \mathbb{R}$に対して以下のように定義される。
+\begin{align*}
+F_{X}(x) = P(X \leq x) = P( \{e \in \varepsilon \; : \; X(e) \leq x \}) = P_{X}((-\infty,x])
+\end{align*}
+\subsection{零集合}
+\label{d}
+\ $\mu$を$(\mathcal{X},\mathcal{A})$上の測度とする。$N$が零集合である定義は以下のとおりである。
+\begin{align*}
+\mu(N) = 0
+\end{align*}
+もし、主張の中に$x \in \mathcal{X} - N \; (\mu(N) = 0)$とあったら、その主張は「ほとんどいたるところで$（\mu\;\text{a.e.} \; or \;  (\text{a.e.}))$」を有している。例えば、$\mu(\{x \in \mathcal{X} \; : \; f(x) \neq 0\}) = 0$のときのみ、$f = 0 \; (\text{a.e.}\; \mu)$が成り立つ。$\\ $
+\ $\mu$が確率測度の時、上記には別の表現がある。主張に$x \in B$があるときである。$\mu(B^{c}) = 0$、もしくは$\mu(B) = 1$のときのみ、その主張は$(\text{a.e.}\; \mu$)となる。このとき、「この主張は確率が1で起こる」と表現される。$\\ $
+\ 零集合上の関数は積分に影響を与えない。この考えより、以下に、認めることの容易な、積分についての重要な事実をいくつか述べる。
+\begin{enumerate}
+\item $f = 0 \; (\text{a.e.}\; \mu) \; \rightarrow \; \int t d\mu = 0$
+\item $f \geq 0 \; \land \;  \int f d\mu = 0 \; \rightarrow \; f = 0\;(\text{a.e.}\; \mu)$
+\item $ f = g \; (\text{a.e.} \; \mu) \; \rightarrow \; \int f d\mu = \int g d\mu$(ただし、どちらかの関数の積分が存在するとする)
+\item $ \int 1_{(c,x)}fd\mu = 0 \; (\forall x > c) \; \rightarrow \; f(x) = 0 \; (\text{a.e.}\; x > c)$(ただし、定数$c$は$-\infty$もとれる)
+\end{enumerate}
+\ 上記二番目の結果より、もし$f$と$g$が可積分で$f > g$ならば、$\mu \equiv 0$でない限り$\int f d\mu > \int g d\mu$となる。
+\subsection{密度}
+\ 密度は、統計学の中でとても基本的な役回りである。多くの状況下で、確率変数Xを区別するのに大変有効な方法として、密度を与えることである。また、密度はベイズ推定や極地推定等にも使われる。
+以下の定義で示される通り、測度に関する密度は測度がほかの測度に関して絶対連続であるとき存在する。
+\begin{enumerate}[label = 定義1.\arabic*.]
+\setcounter{enumi}{8}
+\item $P$ と $\mu$を$\mathcal{X}$の$\sigma-加法族$ $\mathcal{A}$上の測度とする。このとき、$\mu(A) = 0$ならば$P(A) = 0$となるなら$P \ll \mu$と書かれ、 $P$は$\mu$に関して絶対連続とよばれる。
+\end{enumerate}
+\begin{enumerate}[label = 定理1.\arabic* ]
+\setcounter{enumi}{9}
+\item 有限測度$P$が$\sigma$有限測度な$\mu$に対して絶対連続であるとする。このとき非負可測関数$f$が存在し、以下のようになる。これをRadon - Nykodymの定理という。
+\begin{align*}
+P(A) = \int_{A}f d\mu \stackrel{\mathrm{def}}{=} \int f 1_{A} d\mu
+\end{align*}
+\ この定理内の関数$f$のことを$Pの\mu$に関するRadon - Nykodym導関数、もしくは$\mu$に関する$P$の密度と呼ばれ、そして以下のように書かれる。
+\begin{align*}
+f = \frac{dP}{d\mu}
+\end{align*}
+前章の積分と零集合の三つ目の結果より、密度$f$は一意ではないが、$f_{0},f_{1}$がどちらも密度であった場合$f_{0} = f{1}\;(a.e.\; \mu)$となる。
+もし、$X \sim P_{X}$で$P_{X}$が$\mu$で絶対連続であり密度$p =dP_{X}/d\mu$であるとき、一般的に$X$は$\mu$にたいして密度$p$を持つと呼ばれる。
+\begin{enumerate}[label = 例1.\arabic*]
+\setcounter{enumii}{10}
+\item (絶対連続のRadon - Nykodym)もし、確率変数$X$が$R$上のルベーグ測度に対して密度$p$を持っていたとする。このとき$X$やその分布関数$P_{X}$は、密度$p$に対して絶対連続だと呼ばれる。
+Radon - Nykodymの定理より、
+\begin{align*}
+F_{X}(x) = P(X \leq x) = P_{X}((-\infty,x]) = \int_{-\infty}^{x} p(u) d\mu
+\end{align*}
+となる。微積分学の基本的な定理を使うと、$p$は累積分布関数$F_{X}$から$p(x) = F_{X}^{'}(x)$と導出できる。
+\item （離散確率変数）$\mathcal{X}_{0}$を$\mathbb{R}$の可算な部分集合とする。このとき、測度$\mu$は以下で定義される。
+\begin{align*}
+\mu(B) = \#(\mathcal{X}_{0} \cap B)
+\end{align*}
+このとき、上記の測度はボレル集合$B$に対する$\mathcal{X}_{0}$上の数え上げ測度と呼ばれる。\ref{f}で見られるように、
+\begin{align*}
+\int f d\mu = \sum_{x \in \mathcal{X}_{0}}f_(x)
+\end{align*}
+となる。
+\end{enumerate}
+\end{enumerate}
+\ もし$X$が確率変数で$P(X \in \mathcal{X}_{0}) = P_{X}(\mathcal{X}_{0}) = 1$であると仮定する。このとき$X$は離散的確率変数と呼ばれる。もし$N$が$\mu$の零集合であるとき$\mu(N) = 0$である。
+測度$\mu$の定義から、$\#(N \cap \mathcal{X}_{0}) = 0$である。つまり、$N \cap \mathcal{X}_{0}^{c} \neq \phi$であり、$N \subset \mathcal{X}_{0}^{c}$となる。このとき、$P_{X}(N) = P(X \in N) \leq P(X \in \mathcal{X}_{0}^{c}) = 1- P(X \in \mathcal{X}_{0})=0$となる。
+つまり、$P_{X}$にたいしても$N$は零集合となる。そして、これは$P_{X}$は$\mu$にたいして絶対連続であることを示している。測度$\mu$に対する$P_{X}$の密度$p$は以下を満たす。
+\begin{align*}
+P(X in A) = P_{X}(A) = \int_{A}p d\mu = \sum_{x in \mathcal{X}_{0}}p(x)1_{A}(x)
+\end{align*}
+\ 特に、$A = {y}\; (y \in \mathcal{X}_{0})$のとき、$X = y$で$P(X = y) = \sum_{x \in \mathcal{X}_{0}}p(x)1_{y}(x)=p(y)$の時のみ$X \in A$が成り立つ。このとき、密度$p$は$X$の確率関数と呼ばれる。
+$\mathcal{X}_{0}^c$が零集合であるため、密度$p(y)$は任意の$y \notin \mathcal{X}_{0}$に対して定義できる。$p(y)=0$となるため、$p(y) = P(Y = y)$がすべての$y$で成り立つ。
+\subsection{期待値}
+\ 今$X$が$(\varepsilon,\mathcal{B},P)$上の確率変数だとする。このとき、$X$の期待値を以下で定義する。
+\begin{align}
+\label{j}
+E[X] = \int X dP
+\end{align}
+この式はめったに使われない。代わりに、$X ~ P_{X}$だとすると以下のようにあらわせる。
+\begin{align}
+\label{g}
+E[X] = \int x dP_{X}(x)
+\end{align}
+また、$Y = f(X)$のとき、
+\begin{align}
+\label{h}
+E[Y] = E[f(X)] = \int f dP_{X}
+\end{align}
+と書ける。二つの式の$P_{X}$に関する積分は、よく密度を使って表せられる。$P_{X}$が測度$\mu$に対して密度$p$を持つとする。このとき、
+\begin{align}
+\label{i}
+\int f dP_{X} = \int fpd\mu
+\end{align}
+と書ける。この特性のおかげで、形式的に$pd\mu$を$dP_{X}$の代わりに用いることができ、導関数表記$p = dP_{X}/d\mu$とかけるのは至極当然のように思える。これらの事実は、変数変換と同じだと捉えられている。
+これらの結果の証明は、積分を定義したときの方法が基本となっている。式(\ref{h}・\ref{i})が指示関数を持つときは、証明は簡単である。線形性より、一般の可測関数の時でも、積分が存在すれば正の単関数や極限を使うと示すことができる。
+絶対連続や離散的確率変数用に専門化した興味深い例を以下に挙げる。
+\begin{enumerate}[label = 例1. \arabic*]
+\setcounter{enumi}{12}
+\item 今、$X$が絶対連続な確率変数で、密度$p$を持つとする。このとき以下が成り立つ。
+\begin{align}
+E[X] = \int x dP_{X}(x) = \int x p(x)dx \nonumber \\
+E[f(X)] = \int f(x)p(x)dx
+\end{align}
+\item もし、$X$が離散で、可算集合$\mathcal{X}_{0}$に対して$P(X \in \mathcal{X}_{0}) = 1$であるとする。また、$\mu$は$\mathcal{X}_{0}$上の数え上げ測度とする。そして、確率関数は$p(x) = P(X = x)$であるとする。
+このとき、以下が成り立つ。
+\begin{align}
+\label{q}
+E[X] = \int x dP_{X}(x) = \int xp(x)d\mu(x)=\sum_{x\in\mathcal{X}_{0}}xp(x) \nonumber \\
+E[f(X)] = \sum_{x\in\mathcal{X}_{0}}f(x)p(x)
+\end{align}
+\end{enumerate}
+\ 期待値は線形性がある。今$X,Y$が確率変数であるとし、$a,b$を$0$以外の非負定数とする。また、$E[X],E[Y]$共に存在し、$\infty - \infty$とならないと仮定する。このとき
+\begin{align}
+E[aX + bY] = aE[X] + bE[Y]
+\end{align}
+が成り立つ。これは積分の線形性の式(\ref{e})より期待値の定義式(\ref{j})から簡単に示される。期待値のもう一つの重要な特性として、$X,Y$が有限な期待値で、$X < Y\;(a.e\;P)$とする。このとき、$E[X] < E[Y]$となる。
+また、線形性と(\ref{d})章の二つ目の結果から、$X \leq Y\;(a.e.\;P)$でどちらも有限の期待値を持つとすると$E[X] \leq E[Y]$となり、$X = Y\;(a.e.\;P)$のときのみ、イコールが成り立つ。$\\ $
+\ 有限な確率変数$X$の分散を以下で定義する。
+\begin{align*}
+Var(X) = E[(E - E[X])^2]
+\end{align*}
+もし、$X$が密度$p$に対して絶対連続であるとする。式(\ref{g})より以下が成り立つ。
+\begin{align*}
+Var(X) = \int(x - E[X])^2p(x)dx
+\end{align*}
+また、$X$が確率関数$p$にたいして離散的であるとする。式(\ref{h})より以下が成り立つ。
+\begin{align*}
+Var(X) = \sum_{x \in \mathcal{X}_{0}}(x-E[X])^{2}p(x)
+\end{align*}
+式(\ref{i})を使うと、
+\begin{align*}
+Var(X) = E[(X^2 - 2XE[X] + (E[X])^{2}] = E[X^{2}]-(E[X])^{2}
+\end{align*}
+が成り立つ。この結果は計算を省略するのによく使われる。$\\ $
+\ 期待値が有限な下で、期待値が存在するならば確率変数$X,Y$の共分散とは以下で定義される。
+\begin{align}
+Cov(X,Y) = E[(X - E[X])(Y - E[Y])]
+\end{align}
+また、$Cov(X,X) = Var(X)$が成り立つ。式(\ref{i})を使えば、
+\begin{align}
+Cov(X,Y) &= E(XY - XE[Y]-YE[X]+E[X]E[Y]) \nonumber \\
+&=E[XY] - E[X]E[Y]
+\end{align}
+共分散は、二つの確率変数間での線形的な関係であると考えられている。しかし、共分散は測度のスケールに依存される。なので、より自然な測度として相関係数がある。そして以下で定義される。
+\begin{align*}
+Cor(X,Y) = \frac{Cov(X,Y)}{[Var(X)Var(Y)]^{\frac{1}{2}}}
+\end{align*}
+相関係数は常に$[-1,1]$の間にある。さらに、もし$\pm1$のとき、二つの確率関数は完全な線形関係がある。　
+\subsection{確率変数ベクトル}
+\ 今、$X_{1},\ldots,x_{n}$を確率変数とし、確率変数ベクトルと呼ばれる関数$X \; : \; \varepsilon \rightarrow \mathbb{R}^{n}$を以下で定義する。
+\begin{align*}
+X(e) = \left(\begin{array}{c}X_{1}(e) \\ \vdots \\ X_{n}(e)\end{array}\right) \; e \in \varepsilon
+\end{align*}
+この章で述べられている確率変数ベクトルの多くの事実や結果は、自然且つ直接的に確率変数に拡張される。例えば、$\mathbb{R}^{n}$のボレル集合$B$上の$X$の分布$P_{X}$は以下で定義され、$X \sim P_{X}$と書かれる。
+\begin{align*}
+P_X(B) = P(X \in B) \stackrel{\mathrm{def}}{=} P(\{e \in \varepsilon \; : \; X(e) \in B)
+\end{align*}
+$P_{X}$が$\mathbb{R}^{n}$上のルベーグ測度に対して絶対連続であるとき、この確率変数ベクトル$X$や$P_{X}$は密度$p$に対して絶対連続であると呼ばれる。この場合、
+\begin{align*}
+P(X \in B) = \int \cdots_{B} \int p(x)dx
+\end{align*}
+となる。もし確率変数$X$が離散であり、何らかの可算集合$\mathcal{X}_{0} \in \mathbb{R}^{n}$に対して$P(X \in \mathcal{X}_{0}) = 1$であるとする。
+このとき、$p(x) = P(X = x)$ならば$P_{X}$は$\mathcal{X}_{O}$の数え上げ測度に対しての密度$p$をもち、
+\begin{align*}
+P(X \in B) = \sum_{x \in \mathcal{X}_{0} \ cap B}p(x)
+\end{align*}
+となる。確率変数ベクトル$X$の期待値ベクトルは、
+\begin{align*}
+E[X] = \left(\begin{array}{c}E[X_{1}]\\ \vdots \\ E[X_{n}]\end{array} \right)
+\end{align*}
+となる。$\\ $
+今、$T : \mathbb{R}^{n} \rightarrow \mathbb{R}$が可測関数であるとする。このとき$T(X)$は確率変数であり、もし、期待値か積分が存在するならば式(\ref{q})より、
+\begin{align*}
+E[T(X)] = \int T dP_{X}
+\end{align*}
+となる。また、$P_{X}$が測度$\mu$に対して密度$p$を持つなら、この積分は$\int Tpd\mu$と表され、数え上げ測度、ルベーグ測度に対してそれぞれ
+\begin{align*}
+\sum_{x \in \mathcal{X}_{0}} T(x)p(x)\; or \; \int \cdots \int T(x)p(x)dx
+\end{align*}
+となる。
+\subsection{共分散行列}
+\ 行列$W_{ij}$すべてが確率変数な時、$W$を確率変数行列と呼ぶ。もし、$W$が確率変数行列なら$E[W]$は各期待値の行列となる。つまり以下が成り立つ。
+\begin{align*}
+(E[W])_{ij} = E[W_{ij}]
+\end{align*}
+ここで、$v$を定数ベクトルとし、$A,B,C$を定数行列、$X$を確率変数ベクトル、$W$を確率変数行列とする。このとき、以下が成り立つ。
+\begin{align}
+\label{z}
+E[v\: +\: AX] &= v + AE[X] \\
+E[A\:+\:BWC] &= A + B(E[W])C
+\end{align}
+これは、期待値の基本的性質から言えることがわかる。というのも$(v + AX)_{i} = v_{i} + \sum_{j}A_{ij}X_{j}$であり、$(A + BWC)_{ij} = A_{ij} + \sum_{k}\sum_{l}B_{ik}W{kl}C_{lj}$であるからだ。$\\ $
+\ 確率変数ベクトル$X$の共分散は、共分散行列となり、
+\begin{align*}
+[Cov(X)]_{ij} = Cov(X_{i},X_{j})
+\end{align*}
+もし、$\mu = E[X]$で$(X-\mu)^{'}$を$(X - \mu)$を転置したもの（列ベクトル）とする。このとき以下が成り立つ。
+\begin{align}
+Cov(X_{i},X_{j}) = E[(X_{i} - \mu_{i})&(X_{j}-\mu_{j})] = E[(X - \mu)(X-\mu)^{'}]_{ij} \nonumber \\
+Cov(X) = E[(X - \mu)(X-\mu)^{'}]
+\end{align}
+同様に、式(\ref{z})より
+\begin{align*}
+Cov(X) = E[XX^{'}] - \mu\mu^{'}
+\end{align*}
+となる。また、アフィン変換をつかったあとの共分散をみると、$v$を定数ベクトル、$A$を定数行列、$X$を確率変数ベクトルとすると以下が成り立つ。
+\begin{align*}
+Cov(v + AX) &= E[(v + AX - v - A\mu)(v + AX - v - v\mu)^{'}] \\
+&= E[A(X-\mu)(X - \mu)^{'}A^{'}] \\
+&= AE[(X-\mu)(X - \mu)^{'}]A^{'} \\
+&= ACov(X)A^{'}
+\end{align*}
+\subsection{直積測度と独立性}
+\ 測度空間$(\mathcal{X},\mathcal{A},\mu)$と$(\mathcal{Y},\mathcal{B},\nu)$を用意する。このとき、一意の測度$\mu × \nu$が存在し、直積測度と呼ばれる。
+$(\mathcal{X}×\mathcal{Y}, \mathcal{A} \lor \mathcal{B})$に対して、すべての$A \in \mathcal{A}$とすべての$B \in \mathcal{B}$に対して
+\begin{align*}
+(\mu × \nu)(\mathcal{A} × \mathcal{B}) = \mu(A)\nu(B)
+\end{align*}
+となる。$\sigma$加法族$\mathcal{A} \lor \mathcal{B}$は、すべての部分集合$A × B \; (A \in \mathcal{A}$,$B \in \mathcal{B})$を含む最小の$\sigma$加法族であると定義される。
+\begin{enumerate}[label=例1.\arabic*]
+\setcounter{enumi}{14}
+\item $\mu$と$\nu$がそれぞれ$\mathcal{R}^{n}$と$\mathcal{R}^{m}$上でルベーグ測度であるとき、$\mu × \nu$は$\mathcal{R}^{n+m}$上のルベーグ測度となる。
+\item $\mu$と$\nu$がそれぞれ$\mathcal{X}^{0}$と$\mathcal{Y}^{0}$上の数え上げ測度とするとき、$\mu×\nu$は$\mathcal{X}^{0}×\mathcal{Y}^{0}$上の数え上げ測度となる。
+\end{enumerate}
+\ 以上の結果は、$\mu × \nu$上の積分結果は$\mu,\nu$上の積分をそれぞれ繰り返すことで得られるということを表している。
+\begin{enumerate}[label = 定理1.\arabic*]
+\setcounter{enumi}{16}
+\item (Fubini)。今、$f \geq 0$であるとすると、
+\begin{align*}
+\int f d(\mu × \nu) &= \int \left[\int f (x,y) d\nu(y)\right]d\mu(x) \\
+&=  \int \left[\int f (x,y) d\mu(x)\right]d\nu(y)
+\end{align*}
+\ 条件を$f \geq 0$から $\int |f|d(\mu × \nu) < \infty$としても上記式は成り立つ。　
+\end{enumerate}
+\ 今、$ f= 1_{S}$とする。例えば、$\mathcal{A}や\mathcal{B}$上の直交座標系上の集合ではない$S$に対しても以上の方法によって、$(\mu × \nu)(S)$は算出される。
+\begin{enumerate}[label = 定義1.\arabic*]
+\setcounter{enumi}{17}
+\item(独立性)。二つの確率変数$X \in \mathcal{R}^{n}$と$Y \in \mathcal{R}^{m}$が独立であるとは、すべてのボレル集合$A,B$に対して
+\begin{align}
+\label{s}
+P(X \in A , Y \in B) = P(X \in A)P(Y \in B)
+\end{align}
+であるときである。
+\end{enumerate}
+\ $Z = \left(\begin{array}{c}X \\ Y\end{array} \right)$であるとする。このとき、$Z \in A × B$で$X \in A,Y \in B$であるなら式(\ref{s})は$X,Y,Z$の分布を使って以下のように書ける。
+\begin{align*}
+P_{Z}(A × B) = P_{X}(A)P_{Y}(B)
+\end{align*}
+つまり、$Z$の分布は直積測度であり
+\begin{align*}
+P_{Z} = P_{X} × P_{Y}
+\end{align*}
+となる。$Z$の密度は$X,Y$の密度の直積で表せられる。これはフビニの定理と式(\ref{s})より表せられる。特に、$P_{X}$が$\mu$に対して密度$p_{X}$をもち、$P_{Y}$が$\nu$に対して密度$p_{Y}$持つとする。
+このとき、
+\begin{align*}
+P(Z\ in S) &= \int 1_{S}d(P_{X}×P_{Y}) \\
+& = \int \left[\int  1_{S}(x,y)dP_{X}(x)\right]dP_{Y}(y) \\
+& = \int \left[\int  1_{S}(x,y)p_{X}(x)d\mu(x)\right]p_{Y}(y)d\nu(y) \\
+& = \int 1_{S}(x,y)p_{X}(x)p_{Y}(y)d\mu(x) d\nu(y)
+\end{align*}
+これは、$P_{Z}$が密度$p_{X}(x)p_{Y}(y)$を持つことを表している。
+\end{document}

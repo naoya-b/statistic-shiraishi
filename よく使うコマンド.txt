@@ -1,0 +1,17 @@
+コマンド一覧（完璧には理解していない。）
+
+・git clone <URL（clone or downloadを押すと出てくる）>
+  自分のpcにすでにgitにリンクされた状態のフォルダを作る。
+
+・git status 今の自分のフォルダの状況確認（どのfileが同期されていないか等々）
+
+・git add --all .　git上でフォルダ全部を更新させる。
+
+・git commit -m "メッセージ" メッセージを付けてgit上に反映させる。git add --all.をしてから
+
+・git push -u origin dev  "dev"ブランチでgithub上更新
+
+・git pull origin dev "dev"ブランチでgithub現在状況を引っ張ってくる。
+
+git commit --allow-empty-message -m '' コメントなしコミット
+ 
