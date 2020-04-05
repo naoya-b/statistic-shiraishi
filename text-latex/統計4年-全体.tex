@@ -48,7 +48,7 @@ $\\ $
 \item $ A_{1},A_{2},\dots \in \mathcal{A} \Rightarrow \displaystyle\bigcup_{i = 1}^{\infty}A_{i} \in \mathcal{A}$
 \end{enumerate}
 \end{enumerate}
-以上で定義したことは、集合関数$\mu$が測度と呼ばれるためには必ず満たさなければならない基本的項目である。例(\ref{a},\ref{b})でもこれらの項目は直観的であろう。
+\ 以下で定義することは、集合関数$\mu$が測度と呼ばれるためには必ず満たさなければならない基本的項目である。例(\ref{a},\ref{b})でもこれらの項目は直観的であろう。
 \begin{enumerate}[label = 定義1.\arabic*.]
 \setcounter{enumi}{3}
 \item 以下を満たすとき、$\sigma-加法族\mathcal{A}$上の関数$\mu$が測度であるという。
@@ -378,7 +378,7 @@ $(\mathcal{X}×\mathcal{Y}, \mathcal{A} \lor \mathcal{B})$に対して、すべ�
 \item $\mu$と$\nu$がそれぞれ$\mathcal{R}^{n}$と$\mathcal{R}^{m}$上でルベーグ測度であるとき、$\mu × \nu$は$\mathcal{R}^{n+m}$上のルベーグ測度となる。
 \item $\mu$と$\nu$がそれぞれ$\mathcal{X}^{0}$と$\mathcal{Y}^{0}$上の数え上げ測度とするとき、$\mu×\nu$は$\mathcal{X}^{0}×\mathcal{Y}^{0}$上の数え上げ測度となる。
 \end{enumerate}
-\ 以上の結果は、$\mu × \nu$上の積分結果は$\mu,\nu$上の積分をそれぞれ繰り返すことで得られるということを表している。
+\ 以下の定理は、$\mu × \nu$上の積分結果は$\mu,\nu$上の積分をそれぞれ繰り返すことで得られるということを表している。
 \begin{enumerate}[label = 定理1.\arabic*]
 \setcounter{enumi}{16}
 \item (Fubini)。今、$f \geq 0$であるとすると、
@@ -414,5 +414,26 @@ P(Z\ in S) &= \int 1_{S}d(P_{X}×P_{Y}) \\
 & = \int \left[\int  1_{S}(x,y)p_{X}(x)d\mu(x)\right]p_{Y}(y)d\nu(y) \\
 & = \int 1_{S}(x,y)p_{X}(x)p_{Y}(y)d\mu(x) d\nu(y)
 \end{align*}
-これは、$P_{Z}$が密度$p_{X}(x)p_{Y}(y)$を持つことを表している。
+これは、$P_{Z}$が密度$p_{X}(x)p_{Y}(y)$を持つことを表している。この本では、$\mu,\nu$は一般的に数え上げ測度かルベーグ測度である。ここでの概論では、二つの確率変数が片方絶対連続・片方離散の場合も考えられている。
+\ もし、$Z = \left(\begin{array}{c}X \\ Y\end{array} \right)$ならば、$P_{Z}$は$X・Y$の同時確率分布であるといわれ、$P_{Z}$の密度は$X・Y$の同時確率密度と呼ばれる。もし、$X・Y$
+が密度$p_{x},p_{y}$持ち、独立ならば、同時確率密度は$p_{x}p_{y}$で書くことができる。$\\ $
+\ この考え方は、確率変数がいくつかあるときにも拡張できる。$Z$が、$X_{1},\ldots,X_{n}$から生成されているとする。このとき、$Z$の分布や密度は、$X_{1},\ldots,X_{n}$からなる同時確率密度・同時確率分布となる。
+もし、確率変数ベクトル$X_{1},\ldots,X_{n}$が独立ならば、ボレル集合$B_{1},\ldots,B_{n}$に対して
+\begin{align*}
+P(X_{1} \in B_{1},\ldots,X_{n}\in B_{n}) = P(X_{1} \in B_{1})×\cdots × P(X_{n} \in B_{n})
+\end{align*}
+となる。また以下の一意な測度$\mu$に対して以下が成り立つことから、$P_{Z} = P_{X_{1}} × \cdots × P_{X_{n}}$となる。
+\begin{align*}
+\mu(B_{1} × \cdots × B_{n} ) = P_{X_{1}}(B_{1}) × \cdots × P_{X_{n}}(B_{n})
+\end{align*}
+\ 以下の命題は、独立な変数の関数は独立になることを示している。
+\begin{enumerate}[label = 命題1.\*arabic]
+\setcounter{enumi}{18}
+\item $X_{1},\ldots,X_{n}$を独立な確率変数とする。そして、$f_{1},\ldots,f_{n}$を可測関数とする。このとき、$f_{1}(X_{1}) \ldots f_{n}(x_{n})$は独立である。
+\end{enumerate}
+\ もし、$X_{i}$が測度$\mu_{i}$に対して密度$p_{X_{i}}$を持つならば、$X_{1},\ldots,X_{n}$は$\mu = \mu_{1}×\cdots × \mu_{n}$に対して同時確率密度$p$を持ち、
+\begin{align*}
+p(x_{1},\ldots,x_{n}) = p_{X_{1}}(x_{1})×\cdots × p_{X_{n}}(x_{n})
+\end{align*}
+となる。もし、$X_{i} \; (i = 1,2,\ldots,n)$が独立同一に$X_{i} \sim Q$となるなら、$X_{1},X_{2},\ldots,X_{n}$は独立同一分布(i.i.d.)と呼ばれ、確率変数の列は、$Q$からの乱数と呼ばれる。
 \end{document}
