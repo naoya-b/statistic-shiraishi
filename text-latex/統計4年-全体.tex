@@ -459,11 +459,40 @@ E[f(X,Y)|X = x] = \int f(x,y)dQ_{x}(y)
 離散となり、確率関数は$p_{Z}(z) = P(Z = z) = P(X = x,Y =y) \; (z = \left(\begin{array}{c}x \\ y\end{array} \right))$となる。また、式(\ref{x})から$Q_{x}(matncal{Y}_{0}) = 1$となる。
 また、$Q_{x}$は離散で$x \in \mathcal{X}_{0}$確率関数は以下で定義される。
 \begin{align}
+\label{v}
 q_{x}(y) = Q_{x}({y}) = P(Y = y|X=x) = \frac{P(Y = y,X = x)}{P(X=x)}
 \end{align}
 よって、式(\ref{y})から期待値は以下のように求められる。
 \begin{align*}
 H(x) = E[f(X,Y) | X = x] = \sum_{y \in \mathcal{Y}_{0}}f(x,y)q_{x}(y)
 \end{align*}
-となる。
+となる。今後$E[|f(X,Y)|] < \infty$を仮定する。式(\ref{v})で$P(X = x,Y = y) = q_{x}(y)p_{X}(x)$と示されていることから、$f(X,Y)$の期待値は以下のように書ける。
+\begin{align*}
+E[F(X,Y)] &= \sum_{\left(\begin{array}{c}x \\ y \end{array}\right) \in \mathcal{X}_{0}×\mathcal{Y}_{0}} f(x,y)P(X = x,Y = y) \\
+          &= \sum_{x\in \mathcal{X}_{0}}\sum_{y \in \mathcal{Y}_{0}}f(x,y)q_{x}(y)p_{X}(x) \\
+          &= \sum_{x \in \mathcal{X}_{0}}H(x)p_{X}(x)
+          &= E[H(X)]
+\end{align*}
+この式は、条件付問題の基本的な式であり、全確率の法則等で呼ばれる。実際、この性質は$X$が離散でない場合でも条件付確率や期待値を定義するのに使うほど基本的な事項である。
+また、式(\ref{y})から得ることができる確率変数$H(X)$は以下のように表せられる。
+\begin{align*}
+H(X) = E[f(X,Y)|X]
+\end{align*}
+全確率の法則を使うと、以下が成り立つ。
+\begin{align*}
+E[f(X,Y)] = E[E[f(X,Y)|X]]
+\end{align*}
+特に、$f(X,Y) = Y$となるとき上記の式は
+\begin{align*}
+E[Y] = E[E(Y|X)]
+\end{align*}
+$Y = 1_{B}$のとき、つまり$B$の指示関数となるとき、$E[Y] = P(B)$となり、$P(B|X) \stackrel{\mathrm{def}}{=} E[1_{B}|X]$から上記の式は
+\begin{align*}
+P(B) = E[P(B|X)]
+\end{align*}
+となる。結果、一般の条件付き期待値や条件付分布でもこれらの性質は成り立ち、以下が成り立つ。
+\begin{align}
+E[Y|X] &= E[E[Y|X,W]|X] \\
+P(B|X) &= E[P(B|X,Y)|X] \nonumber
+\end{align}
 \end{document}
