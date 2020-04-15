@@ -18,27 +18,26 @@ $\\ $
 \subsection{測度論}
 \ 集合$\mathcal{X}$上の測度$\mu$とは、$\mathcal{X}$に含まれる部分集合$A$に対しての非負値$\mu(A)$のことである。以下に２つ例を挙げる。
 \begin{enumerate}[label = 例 1.\arabic* .]
-\item $\mathcal{X}$が可算集合と仮定する。このとき、$\mathcal{X}$上の数え上げ測度を以下で定義する。
+\item $\mathcal{X}$が可算集合と仮定する。このとき、$\mathcal{X}$上の数え上げ測度を以下で定義することができる。
 \begin{align}
 \label{a}
-\mu(A) = |A| = Aの元の個数
+\mu(A) = \#A = Aの元の個数
 \end{align}
 \newpage
-\item $\mathcal{X} = \mathbb{R}$とする。$\mu(A)$を
+\item $\mathcal{X} = \mathbb{R}^{n}$とする。$\mu(A)$を
 \begin{align}
 \label{b}
-\mu(A) = \int_{A} \cdots \int_{A} dx_{1} \cdots dx_{n}.
+\mu(A) = \int \underset{\mathrm{A}}{\cdots} \int dx_{1} \cdots dx_{n}.
 \end{align}
-と定めたとき、n=1,2,3の下では$\mu(A)$は各々長さ、面積、体積と呼ばれる。また一般的に、上で定義した$\mu$は$\mathbb{R}$上でのルベーグ測度と呼ばれる。
+と定めたとき、n=1,2,3の下では$\mu(A)$は各々長さ、面積、体積と呼ばれる。また一般的に、上で定義した$\mu$は$\mathbb{R}^{n}$上でのルベーグ測度と呼ばれる。
 実際、いくつかの集合では、式(\ref{b})で定義した$\mu(A)$の値を求める方法が明らかではない。そこで以下我々が示すように、測度論の定理が積分学の根本的な問題に根強くかかわってくるのである。
 \end{enumerate}
 $\\ $
-\ 先ほどの例で挙げられた測度は、ある意味それぞれ異なっている。数え上げ測度は、一意の点の個数を測ってた。つまり、$\mu(\{x\}) = 1 \; (\forall x \in \mathcal{X})$である。
+\ 先ほどの例で挙げられた測度は、ある意味それぞれ異なっている。数え上げ測度は、個々の点の個数を測ってた。つまり、$\mu(\{x\}) = 1 \; (\forall x \in \mathcal{X})$である。
 一方、ルベーグ測度では、$\mu(\{x\}) = 1$となるような点はない。一般的に、もし$\mu(\{x\}) > 0 $ならば、xは$\mu(\{x\}) > 0$な元と呼ばれる。
 $\\ $
 $\\ $
-\ 普通、$\mathcal{X}$のすべての部分集合$A$にたいして、測度を計算するのは不可能である。その代わり、測度$\mu$に対する領域 -"$\sigma-加法族$"を用意する。
-
+\ 普通、$\mathcal{X}$のすべての部分集合$A$にたいして、測度を割り当てるのは不可能である。その代わり、測度$\mu$に対する領域 -"$\sigma-加法族$"を用意する。
 \begin{enumerate}[label = 定義1.\arabic*.]
 \setcounter{enumi}{2}
 \item $A$を部分集合、$\mathcal{A}$を集合$\mathcal{X}$の集合族と仮定する。以下が成り立つとき、$\mathcal{A}$を$\sigma-加法族$と呼ぶ。
@@ -48,7 +47,7 @@ $\\ $
 \item $ A_{1},A_{2},\dots \in \mathcal{A} \Rightarrow \displaystyle\bigcup_{i = 1}^{\infty}A_{i} \in \mathcal{A}$
 \end{enumerate}
 \end{enumerate}
-\ 以下で定義することは、集合関数$\mu$が測度と呼ばれるためには必ず満たさなければならない基本的項目である。例(\ref{a},\ref{b})でもこれらの項目は直観的であろう。
+\ 以下で定義することは、集合関数$\mu$が測度と呼ばれるためには必ず満たさなければならない基本的項目である。例1.\ref{a},1.\ref{b}でもこれらの項目は直観的に満たすことがわかる。
 \begin{enumerate}[label = 定義1.\arabic*.]
 \setcounter{enumi}{3}
 \item 以下を満たすとき、$\sigma-加法族\mathcal{A}$上の関数$\mu$が測度であるという。
@@ -58,27 +57,28 @@ $\\ $
 \end{enumerate}
 \end{enumerate}
 ここで、上で定義したことについての興味深くまた有用な結果として以下のことが言える。$\\ $
-\ 可算集合$B_{n}\; (n \leq 1)$が、単調増加且つ $B = \displaystyle\bigcup_{n = 1}^{\infty}B_{n}$を仮定する。
+\ 可測集合$B_{n}\; (n \geq 1)$が、単調増加且つ $B = \displaystyle\bigcup_{n = 1}^{\infty}B_{n}$を仮定する。
 \begin{align}
 \label{c}
-\mu(B) = \lim_{x \rightarrow \infty} \mu(B_{n})
+\mu(B) = \lim_{n \rightarrow \infty} \mu(B_{n})
 \end{align}
 これは、測度が連続といった特徴だと捉えられる。
 \newpage
-\ $\mathcal{A}$が集合$\mathcal{X}$の$\sigma-加法族$のとき、$(\mathcal{X},\mathcal{A})$を可測空間と呼ぶ。また、$\mu$を$\mathcal{A}$の測度としたとき、$(\mathcal{X},\mathcal{A},\mu)$を測度空間と呼ぶ。$\\ $
-\ また、測度$\mu$が有限であるとは、$\mu(\mathcal{X}) < \infty \; \land \; \mu(A_{i}) < \infty \: (\forall i \in \mathbb{N} \; \land \; \displaystyle\bigcup_{i=1}^{\infty}A_{i} = \mathcal{X})$を満たす時である。本書では、測度はすべて有限であると仮定する。 $\\ $
-\ また、測度$\mu$が確率測度であるとは$\mu(\mathcal{X}) = 1$を満たすときであり、その時は測度空間のことを確率空間と呼ぶ。確率測度や有限測度では、式(\ref{c})を単調減少な集合に対して類推すると以下のことが成り立つ。$\\ $
-\ 可測集合$B_{i} \; (i \in \mathbb{N})$が単調減少で、$ B = \displaystyle\bigcap_{i=1}^{\infty}B_{n}$を満たしているとき、
+\ $\mathcal{A}$が集合$\mathcal{X}$の$\sigma-加法族$のとき、$(\mathcal{X},\mathcal{A})$を可測空間と呼ぶ。また、$\mu$を$\mathcal{A}$上の測度としたとき、$(\mathcal{X},\mathcal{A},\mu)$を測度空間と呼ぶ。$\\ $
+\ また、測度$\mu$が有限であるとは$\mu(\mathcal{X})<\infty$となる時であり、測度$\mu$が$\sigma$有限であるとは、$\mu(A_{i}) < \infty \: (\forall i \in \mathbb{N} \; \land \; \displaystyle\bigcup_{i=1}^{\infty}A_{i} = \mathcal{X})$となる$A_{1},A_{2},\ldots$が$\mathcal{A}$に含まれている時である。本書では、測度はすべて$\sigma$有限であると仮定する。 $\\ $
+\ また、測度$\mu$が確率測度であるとは$\mu(\mathcal{X}) = 1$を満たすときであり、その時は測度空間のことを確率空間と呼ぶ。確率測度や有限測度では、減少列に対して式(\ref{c})で類推したような事が成立する。$\\ $
+\ 可測集合$B_{i} \; (i \in \mathbb{N})$が単調減少で、$ B = \displaystyle\bigcap_{i=1}^{\infty}B_{i}$を満たしているとき、
 \begin{align*}
 \mu(B) = \lim_{n \rightarrow \infty} \mu(B_{n})
 \end{align*}
 となる。$\\ $
-\ 例(1.\ref{a})の時を考える。数え上げ測度は、$\mathcal{X}$のどんな部分集合に対しても定義することができる。よって、$\sigma-加法族\mathcal{A}$は、$\mathcal{X}$のすべての部分集合を集めたものになる。この$\sigma-加法族$は$\mathcal{X}$のべき集合と呼ばれ、$\mathcal{A} = 2^{\mathcal{X}}$と定義される。$\\ $
-\ 例(1.\ref{b})の時を考える。集合$A$のルベーグ測度は、暗黙の了解で、$\mathcal{A}$が$\mathbb{R}^{n}$のBorel集合族の時は定義される。正式には、$\mathcal{A}$はすべての矩形を含む最小の$\sigma-加法族$である。矩形の定義は以下である。
+\ 例(1.\ref{a})の時を考える。数え上げ測度は、$\mathcal{X}$のどんな部分集合に対しても$\mu(A)=\#A$ と定義することができる
+る。よって、$\sigma-加法族\mathcal{A}$は、$\mathcal{X}$のすべての部分集合を集めたものになる。この$\sigma-加法族$は$\mathcal{X}$のべき集合と呼ばれ、$\mathcal{A} = 2^{\mathcal{X}}$と定義される。$\\ $
+\ 例(1.\ref{b})の時を考える。集合$A$のルベーグ測度は、暗黙の了解で、$R^n$のBorel集合と呼ばれる$\sigmaー加法族\mathcal{A}$の元Aに対して定義される。正式には、$\mathcal{A}$はすべての矩形を含む最小の$\sigma-加法族$である。矩形の定義は以下である。
 \begin{align*}
-(a_{1},b_{1})×(a_{2},b_{2})×\cdots×(a_{n},b_{n}) = \{x \in \mathbb{R^{n}}\; :\; a_{i} < x_{i} < b_{i},\; i = 1,2,\cdots \}
+(a_{1},b_{1})\times(a_{2},b_{2})\times\cdots\times(a_{n},b_{n}) = \{x \in \mathbb{R}^{n}\; :\; a_{i} < x_{i} < b_{i},\; i = 1,2,\cdots \}
 \end{align*}
-\ しかし、ボレル集合族ではない集合族はたくさんあるものの一つとして細かく定義できるものはない。
+\ しかし、ボレル集合族ではない集合族はたくさんあるものの一つとして明示的に定義できるものはない。
 \subsection{積分}
 \ この章の目標は、測度$\mu$に対して性質の良い関数$f$の積分を適切に定義することである。積分は、必要に応じて$\int f d\mu \;  or \; \int f(x) d\mu(x)$といった表記で書かれる。この後の発展のために、数え上げ測度とルベーグ測度についての積分を述べる。
 \begin{enumerate}[label = 例1.\arabic*]
@@ -91,8 +91,8 @@ $\\ $
 \begin{align*}
 \int f d\mu = \int \cdots \int f(x_{1},\cdots,x_{n})dx_{1} \cdots dx_{n}.
 \end{align*}
+xをベクトル$(x_{1},x_{2},\ldots,x_{n})^{'}$と見て、ルベーグ測度に対する上記の積分を$\int \cdots \int f(x)dx \: or\: \int f(x)dx$と書くのが便利である。
 \end{enumerate}
-\newpage
 \ ここで挙げられている現代の積分の定義は、ほとんどの基本的な微積分の授業で与えられている定義だ。積分は、性質の良い関数$f$は$\int f d\mu$が一意的でなければならないという主張のもとに構成されている。積分学の規則のポイントとして、以下の定義で挙げられるような"可測である"というのがある。
 \begin{enumerate}[label = 定義1.\arabic*]
 \setcounter{enumi}{6}
@@ -104,7 +104,7 @@ f^{-1}(B) \stackrel{\mathrm{def}}{=} \{x \in \mathcal{X} \; : \; f(x) \in B \} \
 \end{enumerate}
 \ 可測でない関数は多く存在するものの、それらを明確に表記することはできない。連続関数や、区分連続関数は可測である。もっと興味深い例として、$f:\mathbb{R} \rightarrow \mathbb{R}$
 に対して、$f(x) = 1 \; (x \in (0,1)) \; and \; f(x) = 0\; (x \notin (0,1))$とすると、$f$は可測である。基礎の微積分学で使われるようなリーマン積分は、このような可測関数$f$に対して$\int f(x)dx$を定義できない。ここで紹介されるより一般的な方法では、$\int f(x)dx = 1$といった整数値を返す。結局、興味のある関数というのは一般的に可測であることを想定されているのだ。$\\ $
-\ 集合$A$に対する支持関数$1_{A}$とは以下で定義される関数のことである。
+\ 集合$A$に対する指示関数$1_{A}$とは以下で定義される関数のことである。
 \begin{align*}
 1_{A}(x) = I\{x \in A\} = \begin{cases} 1,\;x \in A; \\ 0,\; x \notin A. \end{cases}
 \end{align*}
@@ -128,7 +128,7 @@ f^{-1}(B) \stackrel{\mathrm{def}}{=} \{x \in \mathcal{X} \; : \; f(x) \in B \} \
 \begin{align*}
 \int \left(\sum_{i = 1}^{m} a_{i}1_{A_{i}}\right)d\mu = \sum_{i=1}^{m}a_{i}\mu(A_{i})
 \end{align*}
-が成り立つ。このような形の関数を単関数と呼ぶ。本書図1.1では、$1_{(1/2,\pi)} + 2*1_{(1,2)}$と定義される単関数のグラフが示されている。以下の結果は非負可測関数なら、単関数で書けることを表している。
+が成り立つ。このような形の関数を単関数と呼ぶ。本書図1.1では、$1_{(1/2,\pi)} + 2*1_{(1,2)}$と定義される単関数のグラフが示されている。以下の結果は非負可測関数なら、単関数で近似できることを表している。
 \begin{enumerate}[label = 定理1.\arabic*]
 \setcounter{enumi}{7}
 \item 関数$f$が非負可測であるとすると、$f_{1} \leq f_{2} \leq \ldots$且つ$f = \displaystyle \lim_{n \rightarrow \infty} f_{n}$を満たす単関数$f_{n}$が存在する。
@@ -143,7 +143,7 @@ f^{+}(x) = max\{f(x),0\} \; f^{-}(x) = max\{-f(x),0\}
 \begin{align*}
 \int f d\mu = \int f^{+} d\mu - \int f^{-} d\mu
 \end{align*}
-これは、$\int f d\mu = \infty$とならない時、積分の線形性の式(\ref{e})を使っている。また、$|f| = f^{+} + f^{-}$より、以上の定義によって、以下の条件を満たすときのみ$\int f d\mu$は有限値を与えられる。
+$\int f d\mu = \infty$とならない条件下で、上記の式は積分の線形性の式(\ref{e})から出されている。また、$|f| = f^{+} + f^{-}$より、以上の定義によって$\int f d\mu$が有限値となる同値条件は以下である。
 \begin{align*}
 \int f^{+} d\mu + \int f^{-}d\mu = \int |f| d\mu < \infty
 \end{align*}
@@ -156,11 +156,11 @@ f^{+}(x) = max\{f(x),0\} \; f^{-}(x) = max\{-f(x),0\}
 \begin{align*}
 P_{X}(A) = P(\{e \in \varepsilon \; : \; X(e) \in A\}) \stackrel{\mathrm{def}}{=} P(X \in A)
 \end{align*}
-また、$X$が分布$Q$を持つとは以下の通りに書かれる。
+また、
 \begin{align*}
 X \sim Q
 \end{align*}
-\ $X$の累積分布関数は$x \in \mathbb{R}$に対して以下のように定義される。
+と書けば、$X$が分布$Q$を持つ、つまり$P_{X} = Q$ということを表している。$X$の累積分布関数は$x \in \mathbb{R}$に対して以下のように定義される。
 \begin{align*}
 F_{X}(x) = P(X \leq x) = P( \{e \in \varepsilon \; : \; X(e) \leq x \}) = P_{X}((-\infty,x])
 \end{align*}
@@ -170,9 +170,9 @@ F_{X}(x) = P(X \leq x) = P( \{e \in \varepsilon \; : \; X(e) \leq x \}) = P_{X}(
 \begin{align*}
 \mu(N) = 0
 \end{align*}
-もし、主張の中に$x \in \mathcal{X} - N \; (\mu(N) = 0)$とあったら、その主張は「ほとんどいたるところで$（\mu\;\text{a.e.} \; or \;  (\text{a.e.}))$」を有している。例えば、$\mu(\{x \in \mathcal{X} \; : \; f(x) \neq 0\}) = 0$のときのみ、$f = 0 \; (\text{a.e.}\; \mu)$が成り立つ。$\\ $
-\ $\mu$が確率測度の時、上記には別の表現がある。主張に$x \in B$があるときである。$\mu(B^{c}) = 0$、もしくは$\mu(B) = 1$のときのみ、その主張は$(\text{a.e.}\; \mu$)となる。このとき、「この主張は確率が1で起こる」と表現される。$\\ $
-\ 零集合上の関数は積分に影響を与えない。この考えより、以下に、認めることの容易な、積分についての重要な事実をいくつか述べる。
+もし、主張が$x \in \mathcal{X} - N \; (\mu(N) = 0)$で成立するなら、その主張はほとんどいたるところで$（\mu\;\text{a.e.} \; or \;  (\text{a.e.}))$成立するという。例えば、$f = 0 \; (\text{a.e.}\; \mu)$というのは$\mu(\{x \in \mathcal{X} \; : \; f(x) \neq 0\}) = 0$と同値である。$\\ $
+\ $\mu$が確率測度の時、上記には別の表現がある。主張が$x \in B$のみで成立すると仮定する。そのとき主張が$(\text{a.e.}\; \mu$)で成立するということと、$\mu(B^{c}) = 0$ということと$\mu(B) = 1$は同値である。これが、「この主張は確率1で成立する」ということを表している。$\\ $
+\ 零集合上の関数は積分に影響を与えない。この考えより、認めることの容易な、積分についての重要な事実を以下にいくつか述べる。
 \begin{enumerate}
 \item $f = 0 \; (\text{a.e.}\; \mu) \; \rightarrow \; \int t d\mu = 0$
 \item $f \geq 0 \; \land \;  \int f d\mu = 0 \; \rightarrow \; f = 0\;(\text{a.e.}\; \mu)$
@@ -180,9 +180,9 @@ F_{X}(x) = P(X \leq x) = P( \{e \in \varepsilon \; : \; X(e) \leq x \}) = P_{X}(
 \item $ \int 1_{(c,x)}fd\mu = 0 \; (\forall x > c) \; \rightarrow \; f(x) = 0 \; (\text{a.e.}\; x > c)$(ただし、定数$c$は$-\infty$もとれる)
 \end{enumerate}
 \ 上記二番目の結果より、もし$f$と$g$が可積分で$f > g$ならば、$\mu \equiv 0$でない限り$\int f d\mu > \int g d\mu$となる。
-\subsection{密度}
-\ 密度は、統計学の中でとても基本的な役回りである。多くの状況下で、確率変数Xを区別するのに大変有効な方法として、密度を与えることである。また、密度はベイズ推定や極地推定等にも使われる。
-以下の定義で示される通り、測度に関する密度は測度がほかの測度に関して絶対連続であるとき存在する。
+\subsection{確率密度}
+\ 確率密度は、統計学の中でとても基本的な役回りである。多くの状況下で、確率変数Xを特定化するのに最も便利な方法が確率密度を与えることである。また、確率密度はベイズ推定量や最尤推定量を算出するに使われる尤度関数を与える。
+以下の定義で示される通り、測度に関する確率密度は測度がほかの測度に関して絶対連続であるとき存在する。
 \begin{enumerate}[label = 定義1.\arabic*.]
 \setcounter{enumi}{8}
 \item $P$ と $\mu$を$\mathcal{X}$の$\sigma-加法族$ $\mathcal{A}$上の測度とする。このとき、$\mu(A) = 0$ならば$P(A) = 0$となるなら$P \ll \mu$と書かれ、 $P$は$\mu$に関して絶対連続とよばれる。
@@ -193,15 +193,15 @@ F_{X}(x) = P(X \leq x) = P( \{e \in \varepsilon \; : \; X(e) \leq x \}) = P_{X}(
 \begin{align*}
 P(A) = \int_{A}f d\mu \stackrel{\mathrm{def}}{=} \int f 1_{A} d\mu
 \end{align*}
-\ この定理内の関数$f$のことを$Pの\mu$に関するRadon - Nykodym導関数、もしくは$\mu$に関する$P$の密度と呼ばれ、そして以下のように書かれる。
+\ この定理内の関数$f$のことを$Pの\mu$に関するRadon - Nykodym導関数、もしくは$\mu$に関する$P$の確率密度と呼ばれ、そして以下のように書かれる。
 \begin{align*}
 f = \frac{dP}{d\mu}
 \end{align*}
-前章の積分と零集合の三つ目の結果より、密度$f$は一意ではないが、$f_{0},f_{1}$がどちらも密度であった場合$f_{0} = f{1}\;(a.e.\; \mu)$となる。
-もし、$X \sim P_{X}$で$P_{X}$が$\mu$で絶対連続であり密度$p =dP_{X}/d\mu$であるとき、一般的に$X$は$\mu$にたいして密度$p$を持つと呼ばれる。
+前章の積分と零集合の三つ目の結果より、確率密度$f$は一意ではないが、$f_{0},f_{1}$がどちらも確率密度であった場合$f_{0} = f_{1}\;(a.e.\; \mu)$となる。
+もし、$X \sim P_{X}$で$P_{X}$が$\mu$で絶対連続であり確率密度$p =dP_{X}/d\mu$であるとき、一般的に$X$は$\mu$にたいして確率密度$p$を持つと呼ばれる。
 \begin{enumerate}[label = 例1.\arabic*]
 \setcounter{enumii}{10}
-\item (絶対連続のRadon - Nykodym)もし、確率変数$X$が$R$上のルベーグ測度に対して密度$p$を持っていたとする。このとき$X$やその分布関数$P_{X}$は、密度$p$に対して絶対連続だと呼ばれる。
+\item (絶対連続な確率変数)もし、確率変数$X$が$\mathbb{R}$上のルベーグ測度に対して確率密度$p$を持っていたとする。このとき$X$やその分布関数$P_{X}$は、確率密度$p$に対して絶対連続だと呼ばれる。
 Radon - Nykodymの定理より、
 \begin{align*}
 F_{X}(x) = P(X \leq x) = P_{X}((-\infty,x]) = \int_{-\infty}^{x} p(u) d\mu
@@ -219,20 +219,20 @@ F_{X}(x) = P(X \leq x) = P_{X}((-\infty,x]) = \int_{-\infty}^{x} p(u) d\mu
 \end{enumerate}
 \end{enumerate}
 \ もし$X$が確率変数で$P(X \in \mathcal{X}_{0}) = P_{X}(\mathcal{X}_{0}) = 1$であると仮定する。このとき$X$は離散的確率変数と呼ばれる。もし$N$が$\mu$の零集合であるとき$\mu(N) = 0$である。
-測度$\mu$の定義から、$\#(N \cap \mathcal{X}_{0}) = 0$である。つまり、$N \cap \mathcal{X}_{0}^{c} \neq \phi$であり、$N \subset \mathcal{X}_{0}^{c}$となる。このとき、$P_{X}(N) = P(X \in N) \leq P(X \in \mathcal{X}_{0}^{c}) = 1- P(X \in \mathcal{X}_{0})=0$となる。
-つまり、$P_{X}$にたいしても$N$は零集合となる。そして、これは$P_{X}$は$\mu$にたいして絶対連続であることを示している。測度$\mu$に対する$P_{X}$の密度$p$は以下を満たす。
+測度$\mu$の定義から、$\#(N \cap \mathcal{X}_{0}) = 0$である。つまり、$N \cap \mathcal{X}_{0} = \phi$であり、$N \subset \mathcal{X}_{0}^{c}$となる。このとき、$P_{X}(N) = P(X \in N) \leq P(X \in \mathcal{X}_{0}^{c}) = 1- P(X \in \mathcal{X}_{0})=0$となる。
+つまり、$P_{X}$にたいしても$N$は零集合となる。そして、これは$P_{X}$は$\mu$にたいして絶対連続であることを示している。測度$\mu$に対する$P_{X}$の確率密度$p$は以下を満たす。
 \begin{align*}
-P(X in A) = P_{X}(A) = \int_{A}p d\mu = \sum_{x in \mathcal{X}_{0}}p(x)1_{A}(x)
+P(X \in A) = P_{X}(A) = \int_{A}p d\mu = \sum_{x \in \mathcal{X}_{0}}p(x)1_{A}(x)
 \end{align*}
-\ 特に、$A = {y}\; (y \in \mathcal{X}_{0})$のとき、$X = y$で$P(X = y) = \sum_{x \in \mathcal{X}_{0}}p(x)1_{y}(x)=p(y)$の時のみ$X \in A$が成り立つ。このとき、密度$p$は$X$の確率関数と呼ばれる。
-$\mathcal{X}_{0}^c$が零集合であるため、密度$p(y)$は任意の$y \notin \mathcal{X}_{0}$に対して定義できる。$p(y)=0$となるため、$p(y) = P(Y = y)$がすべての$y$で成り立つ。
+\ 特に、$A = \{y\} \; (y \in \mathcal{X}_{0})$のとき、$X \in A$で$X = y$であるのと同値であるため、$P(X = y) = \sum_{x \in \mathcal{X}_{0}}p(x)1_{\{y\}}(x)=p(y)$が成り立つ。このとき、確率密度$p$は$X$の確率関数と呼ばれる。
+$\mathcal{X}_{0}^{c}$が零集合であるため、確率密度$p(y)$は任意の$y \notin \mathcal{X}_{0}$に対して定義できる。慣習では、$y \notin \mathcal{X}_{0}$に対して$p(y)=0$と取るため、任意の$y$で$p(y) = P(Y = y)$となるのだ。
 \subsection{期待値}
 \ 今$X$が$(\varepsilon,\mathcal{B},P)$上の確率変数だとする。このとき、$X$の期待値を以下で定義する。
 \begin{align}
 \label{j}
 E[X] = \int X dP
 \end{align}
-この式はめったに使われない。代わりに、$X ~ P_{X}$だとすると以下のようにあらわせる。
+この式はめったに使われない。代わりに、$X \sim P_{X}$だとすると以下のようにあらわせる。
 \begin{align}
 \label{g}
 E[X] = \int x dP_{X}(x)
@@ -242,7 +242,7 @@ E[X] = \int x dP_{X}(x)
 \label{h}
 E[Y] = E[f(X)] = \int f dP_{X}
 \end{align}
-と書ける。二つの式の$P_{X}$に関する積分は、よく密度を使って表せられる。$P_{X}$が測度$\mu$に対して密度$p$を持つとする。このとき、
+と書ける。二つの式の$P_{X}$に関する積分は、よく確率密度を使って表せられる。$P_{X}$が測度$\mu$に対して確率密度$p$を持つとする。このとき、
 \begin{align}
 \label{i}
 \int f dP_{X} = \int fpd\mu
@@ -252,8 +252,9 @@ E[Y] = E[f(X)] = \int f dP_{X}
 絶対連続や離散的確率変数用に専門化した興味深い例を以下に挙げる。
 \begin{enumerate}[label = 例1. \arabic*]
 \setcounter{enumi}{12}
-\item 今、$X$が絶対連続な確率変数で、密度$p$を持つとする。このとき以下が成り立つ。
+\item 今、$X$が絶対連続な確率変数で、確率密度$p$を持つとする。このとき以下が成り立つ。
 \begin{align}
+\label{w}
 E[X] = \int x dP_{X}(x) = \int x p(x)dx \nonumber \\
 E[f(X)] = \int f(x)p(x)dx
 \end{align}
@@ -261,39 +262,41 @@ E[f(X)] = \int f(x)p(x)dx
 このとき、以下が成り立つ。
 \begin{align}
 \label{q}
-E[X] = \int x dP_{X}(x) = \int xp(x)d\mu(x)=\sum_{x\in\mathcal{X}_{0}}xp(x) \nonumber \\
-E[f(X)] = \sum_{x\in\mathcal{X}_{0}}f(x)p(x)
+E[X] = \int x dP_{X}(x)& = \int xp(x)d\mu(x)=\sum_{x\in\mathcal{X}_{0}}xp(x) \nonumber \\
+E[f(X)] &= \sum_{x\in\mathcal{X}_{0}}f(x)p(x)
 \end{align}
 \end{enumerate}
 \ 期待値は線形性がある。今$X,Y$が確率変数であるとし、$a,b$を$0$以外の非負定数とする。また、$E[X],E[Y]$共に存在し、$\infty - \infty$とならないと仮定する。このとき
 \begin{align}
+\label{p}
 E[aX + bY] = aE[X] + bE[Y]
 \end{align}
 が成り立つ。これは積分の線形性の式(\ref{e})より期待値の定義式(\ref{j})から簡単に示される。期待値のもう一つの重要な特性として、$X,Y$が有限な期待値で、$X < Y\;(a.e\;P)$とする。このとき、$E[X] < E[Y]$となる。
-また、線形性と(\ref{d})章の二つ目の結果から、$X \leq Y\;(a.e.\;P)$でどちらも有限の期待値を持つとすると$E[X] \leq E[Y]$となり、$X = Y\;(a.e.\;P)$のときのみ、イコールが成り立つ。$\\ $
+また、線形性と\ref{d}章の二つ目の結果から、$X \leq Y\;(a.e.\;P)$でどちらも有限の期待値を持つとすると$E[X] \leq E[Y]$となり、$X = Y\;(a.e.\;P)$のときのみ、イコールが成り立つ。$\\ $
 \ 有限な確率変数$X$の分散を以下で定義する。
 \begin{align*}
-Var(X) = E[(E - E[X])^2]
+Var(X) = E[(X - E[X])^2]
 \end{align*}
-もし、$X$が密度$p$に対して絶対連続であるとする。式(\ref{g})より以下が成り立つ。
+もし、$X$が確率密度$p$に対して絶対連続であるとする。式(\ref{w})より以下が成り立つ。
 \begin{align*}
 Var(X) = \int(x - E[X])^2p(x)dx
 \end{align*}
-また、$X$が確率関数$p$にたいして離散的であるとする。式(\ref{h})より以下が成り立つ。
+また、$X$が確率関数$p$にたいして離散的であるとする。式(\ref{q})より以下が成り立つ。
 \begin{align*}
 Var(X) = \sum_{x \in \mathcal{X}_{0}}(x-E[X])^{2}p(x)
 \end{align*}
-式(\ref{i})を使うと、
+式(\ref{p})を使うと、
 \begin{align*}
 Var(X) = E[(X^2 - 2XE[X] + (E[X])^{2}] = E[X^{2}]-(E[X])^{2}
 \end{align*}
 が成り立つ。この結果は計算を省略するのによく使われる。$\\ $
-\ 期待値が有限な下で、期待値が存在するならば確率変数$X,Y$の共分散とは以下で定義される。
+\ 期待値が存在するならば、有限な期待値を持つ確率変数$X,Y$の共分散は以下で定義される。
 \begin{align}
 Cov(X,Y) = E[(X - E[X])(Y - E[Y])]
 \end{align}
-また、$Cov(X,X) = Var(X)$が成り立つ。式(\ref{i})を使えば、
+また、$Cov(X,X) = Var(X)$が成り立つ。式(\ref{p})を使えば、
 \begin{align}
+\label{ab}
 Cov(X,Y) &= E(XY - XE[Y]-YE[X]+E[X]E[Y]) \nonumber \\
 &=E[XY] - E[X]E[Y]
 \end{align}
@@ -303,7 +306,7 @@ Cor(X,Y) = \frac{Cov(X,Y)}{[Var(X)Var(Y)]^{\frac{1}{2}}}
 \end{align*}
 相関係数は常に$[-1,1]$の間にある。さらに、もし$\pm1$のとき、二つの確率関数は完全な線形関係がある。　
 \subsection{確率変数ベクトル}
-\ 今、$X_{1},\ldots,x_{n}$を確率変数とし、確率変数ベクトルと呼ばれる関数$X \; : \; \varepsilon \rightarrow \mathbb{R}^{n}$を以下で定義する。
+\ 今、$X_{1},\ldots,X_{n}$を確率変数とし、確率変数ベクトルと呼ばれる関数$X \; : \; \varepsilon \rightarrow \mathbb{R}^{n}$を以下で定義する。
 \begin{align*}
 X(e) = \left(\begin{array}{c}X_{1}(e) \\ \vdots \\ X_{n}(e)\end{array}\right) \; e \in \varepsilon
 \end{align*}
@@ -311,25 +314,25 @@ X(e) = \left(\begin{array}{c}X_{1}(e) \\ \vdots \\ X_{n}(e)\end{array}\right) \;
 \begin{align*}
 P_X(B) = P(X \in B) \stackrel{\mathrm{def}}{=} P(\{e \in \varepsilon \; : \; X(e) \in B)
 \end{align*}
-$P_{X}$が$\mathbb{R}^{n}$上のルベーグ測度に対して絶対連続であるとき、この確率変数ベクトル$X$や$P_{X}$は密度$p$に対して絶対連続であると呼ばれる。この場合、
+$P_{X}$が$\mathbb{R}^{n}$上のルベーグ測度に対して絶対連続であるとき、この確率変数ベクトル$X$や$P_{X}$は確率密度$p$に対して絶対連続であると呼ばれる。この場合、
 \begin{align*}
-P(X \in B) = \int \cdots_{B} \int p(x)dx
+P(X \in B) = \int \underset{\mathrm{B}}{\cdots} \int p(x)dx
 \end{align*}
 となる。もし確率変数$X$が離散であり、何らかの可算集合$\mathcal{X}_{0} \in \mathbb{R}^{n}$に対して$P(X \in \mathcal{X}_{0}) = 1$であるとする。
-このとき、$p(x) = P(X = x)$ならば$P_{X}$は$\mathcal{X}_{O}$の数え上げ測度に対しての密度$p$をもち、
+このとき、$p(x) = P(X = x)$ならば$P_{X}$は$\mathcal{X}_{0}$の数え上げ測度に対しての確率密度$p$をもち、
 \begin{align*}
-P(X \in B) = \sum_{x \in \mathcal{X}_{0} \ cap B}p(x)
+P(X \in B) = \sum_{x \in \mathcal{X}_{0} \cap B}p(x)
 \end{align*}
 となる。確率変数ベクトル$X$の期待値ベクトルは、
 \begin{align*}
 E[X] = \left(\begin{array}{c}E[X_{1}]\\ \vdots \\ E[X_{n}]\end{array} \right)
 \end{align*}
 となる。$\\ $
-今、$T : \mathbb{R}^{n} \rightarrow \mathbb{R}$が可測関数であるとする。このとき$T(X)$は確率変数であり、もし、期待値か積分が存在するならば式(\ref{q})より、
+今、$T : \mathbb{R}^{n} \rightarrow \mathbb{R}$が可測関数であるとする。このとき$T(X)$は確率変数であり、もし、期待値か積分が存在するならば式(\ref{h})より、
 \begin{align*}
 E[T(X)] = \int T dP_{X}
 \end{align*}
-となる。また、$P_{X}$が測度$\mu$に対して密度$p$を持つなら、この積分は$\int Tpd\mu$と表され、数え上げ測度、ルベーグ測度に対してそれぞれ
+となる。また、$P_{X}$が測度$\mu$に対して確率密度$p$を持つなら、この積分は$\int Tpd\mu$と表され、数え上げ測度、ルベーグ測度に対してそれぞれ
 \begin{align*}
 \sum_{x \in \mathcal{X}_{0}} T(x)p(x)\; or \; \int \cdots \int T(x)p(x)dx
 \end{align*}
@@ -343,19 +346,20 @@ E[T(X)] = \int T dP_{X}
 \begin{align}
 \label{z}
 E[v\: +\: AX] &= v + AE[X] \\
+\label{aa}
 E[A\:+\:BWC] &= A + B(E[W])C
 \end{align}
-これは、期待値の基本的性質から言えることがわかる。というのも$(v + AX)_{i} = v_{i} + \sum_{j}A_{ij}X_{j}$であり、$(A + BWC)_{ij} = A_{ij} + \sum_{k}\sum_{l}B_{ik}W{kl}C_{lj}$であるからだ。$\\ $
+これは、期待値の基本的性質から言えることがわかる。というのも$(v + AX)_{i} = v_{i} + \sum_{j}A_{ij}X_{j}$であり、$(A + BWC)_{ij} = A_{ij} + \sum_{k}\sum_{l}B_{ik}W_{kl}C_{lj}$であるからだ。$\\ $
 \ 確率変数ベクトル$X$の共分散は、共分散行列となり、
 \begin{align*}
 [Cov(X)]_{ij} = Cov(X_{i},X_{j})
 \end{align*}
-もし、$\mu = E[X]$で$(X-\mu)^{'}$を$(X - \mu)$を転置したもの（列ベクトル）とする。このとき以下が成り立つ。
+もし、$\mu = E[X]$で$(X-\mu)^{'}$を$(X - \mu)$を転置したもの（行ベクトル）とする。このとき以下が成り立つ。
 \begin{align}
-Cov(X_{i},X_{j}) = E[(X_{i} - \mu_{i})&(X_{j}-\mu_{j})] = E[(X - \mu)(X-\mu)^{'}]_{ij} \nonumber \\
-Cov(X) = E[(X - \mu)(X-\mu)^{'}]
+Cov(X_{i},X_{j}) &= E[(X_{i}-\mu_{i})(X_{j}-\mu_{j})] = E[(X - \mu)(X-\mu)^{'}]_{ij} \nonumber \\
+Cov(X) &= E[(X - \mu)(X-\mu)^{'}]
 \end{align}
-同様に、式(\ref{z})より
+同様に、式(\ref{ab})か(\ref{aa})より
 \begin{align*}
 Cov(X) = E[XX^{'}] - \mu\mu^{'}
 \end{align*}
@@ -367,85 +371,85 @@ Cov(v + AX) &= E[(v + AX - v - A\mu)(v + AX - v - v\mu)^{'}] \\
 &= ACov(X)A^{'}
 \end{align*}
 \subsection{直積測度と独立性}
-\ 測度空間$(\mathcal{X},\mathcal{A},\mu)$と$(\mathcal{Y},\mathcal{B},\nu)$を用意する。このとき、一意の測度$\mu × \nu$が存在し、直積測度と呼ばれる。
-$(\mathcal{X}×\mathcal{Y}, \mathcal{A} \lor \mathcal{B})$に対して、すべての$A \in \mathcal{A}$とすべての$B \in \mathcal{B}$に対して
+\ 測度空間$(\mathcal{X},\mathcal{A},\mu)$と$(\mathcal{Y},\mathcal{B},\nu)$を用意する。このとき、一意の測度$\mu \times \nu$が存在し、直積測度と呼ばれる。
+$(\mathcal{X}\times\mathcal{Y}, \mathcal{A} \lor \mathcal{B})$に対して、すべての$A \in \mathcal{A}$とすべての$B \in \mathcal{B}$に対して
 \begin{align*}
-(\mu × \nu)(\mathcal{A} × \mathcal{B}) = \mu(A)\nu(B)
+(\mu \times \nu)(\mathcal{A} \times \mathcal{B}) = \mu(A)\nu(B)
 \end{align*}
-となる。$\sigma$加法族$\mathcal{A} \lor \mathcal{B}$は、すべての部分集合$A × B \; (A \in \mathcal{A}$,$B \in \mathcal{B})$を含む最小の$\sigma$加法族であると定義される。
+となる。$\sigma$加法族$\mathcal{A} \lor \mathcal{B}$は、すべての部分集合$A \times B \; (A \in \mathcal{A}$,$B \in \mathcal{B})$を含む最小の$\sigma$加法族であると定義される。
 \begin{enumerate}[label=例1.\arabic*]
 \setcounter{enumi}{14}
-\item $\mu$と$\nu$がそれぞれ$\mathcal{R}^{n}$と$\mathcal{R}^{m}$上でルベーグ測度であるとき、$\mu × \nu$は$\mathcal{R}^{n+m}$上のルベーグ測度となる。
-\item $\mu$と$\nu$がそれぞれ$\mathcal{X}^{0}$と$\mathcal{Y}^{0}$上の数え上げ測度とするとき、$\mu×\nu$は$\mathcal{X}^{0}×\mathcal{Y}^{0}$上の数え上げ測度となる。
+\item $\mu$と$\nu$がそれぞれ$\mathbb{R}^{n}$と$\mathbb{R}^{m}$上でルベーグ測度であるとき、$\mu \times \nu$は$\mathbb{R}^{n+m}$上のルベーグ測度となる。
+\item $\mu$と$\nu$がそれぞれ$\mathcal{X}_{0}$と$\mathcal{Y}_{0}$上の数え上げ測度とするとき、$\mu\times\nu$は$\mathcal{X}_{0}\times\mathcal{Y}_{0}$上の数え上げ測度となる。
 \end{enumerate}
-\ 以下の定理は、$\mu × \nu$上の積分結果は$\mu,\nu$上の積分をそれぞれ繰り返すことで得られるということを表している。
+\ 以下の定理は、$\mu \times \nu$上の積分結果は$\mu,\nu$上の積分をそれぞれ繰り返すことで得られるということを表している。
 \begin{enumerate}[label = 定理1.\arabic*]
 \setcounter{enumi}{16}
 \item (Fubini)。今、$f \geq 0$であるとすると、
 \begin{align*}
-\int f d(\mu × \nu) &= \int \left[\int f (x,y) d\nu(y)\right]d\mu(x) \\
+\int f d(\mu \times \nu) &= \int \left[\int f (x,y) d\nu(y)\right]d\mu(x) \\
 &=  \int \left[\int f (x,y) d\mu(x)\right]d\nu(y)
 \end{align*}
-\ 条件を$f \geq 0$から $\int |f|d(\mu × \nu) < \infty$としても上記式は成り立つ。　
+\ 条件を$f \geq 0$から $\int |f|d(\mu \times \nu) < \infty$としても上記式は成り立つ。　
 \end{enumerate}
-\ 今、$ f= 1_{S}$とする。例えば、$\mathcal{A}や\mathcal{B}$上の直交座標系上の集合ではない$S$に対しても以上の方法によって、$(\mu × \nu)(S)$は算出される。
+\ 今、$ f= 1_{S}$とする。例えば、$\mathcal{A}や\mathcal{B}$上の直交座標系上の集合ではない$S$に対しても以上の方法によって、$(\mu \times \nu)(S)$は算出される。
 \begin{enumerate}[label = 定義1.\arabic*]
 \setcounter{enumi}{17}
-\item(独立性)。二つの確率変数$X \in \mathcal{R}^{n}$と$Y \in \mathcal{R}^{m}$が独立であるとは、すべてのボレル集合$A,B$に対して
+\item(独立性)。二つの確率変数$X \in \mathbb{R}^{n}$と$Y \in \mathbb{R}^{m}$が独立であるとは、すべてのボレル集合$A,B$に対して
 \begin{align}
 \label{s}
 P(X \in A , Y \in B) = P(X \in A)P(Y \in B)
 \end{align}
 であるときである。
 \end{enumerate}
-\ $Z = \left(\begin{array}{c}X \\ Y\end{array} \right)$であるとする。このとき、$Z \in A × B$で$X \in A,Y \in B$であるなら式(\ref{s})は$X,Y,Z$の分布を使って以下のように書ける。
+\ $Z = \left(\begin{array}{c}X \\ Y\end{array} \right)$であるとする。このとき$Z \in A \times B$は$X \in A,Y \in B$と同値条件であるため式(\ref{s})は$X,Y,Z$の分布を使って以下のように書ける。
 \begin{align*}
-P_{Z}(A × B) = P_{X}(A)P_{Y}(B)
+P_{Z}(A \times B) = P_{X}(A)P_{Y}(B)
 \end{align*}
 つまり、$Z$の分布は直積測度であり
 \begin{align*}
-P_{Z} = P_{X} × P_{Y}
+P_{Z} = P_{X} \times P_{Y}
 \end{align*}
-となる。$Z$の密度は$X,Y$の密度の直積で表せられる。これはフビニの定理と式(\ref{s})より表せられる。特に、$P_{X}$が$\mu$に対して密度$p_{X}$をもち、$P_{Y}$が$\nu$に対して密度$p_{Y}$持つとする。
+となる。$Z$の確率密度は$X,Y$の確率密度の直積で表せられる。これはフビニの定理と式(\ref{s})より表せられる。特に、$P_{X}$が$\mu$に対して確率密度$p_{X}$をもち、$P_{Y}$が$\nu$に対して確率密度$p_{Y}$持つとする。
 このとき、
 \begin{align*}
-P(Z\ in S) &= \int 1_{S}d(P_{X}×P_{Y}) \\
+P(Z \in S) &= \int 1_{S}d(P_{X}\times P_{Y}) \\
 & = \int \left[\int  1_{S}(x,y)dP_{X}(x)\right]dP_{Y}(y) \\
 & = \int \left[\int  1_{S}(x,y)p_{X}(x)d\mu(x)\right]p_{Y}(y)d\nu(y) \\
-& = \int 1_{S}(x,y)p_{X}(x)p_{Y}(y)d\mu(x) d\nu(y)
+& = \int 1_{S}(x,y)p_{X}(x)p_{Y}(y)d(\mu \times \nu)(x,y)
 \end{align*}
-これは、$P_{Z}$が密度$p_{X}(x)p_{Y}(y)$を持つことを表している。この本では、$\mu,\nu$は一般的に数え上げ測度かルベーグ測度である。ここでの概論では、二つの確率変数が片方絶対連続・片方離散の場合も考えられている。
-\ もし、$Z = \left(\begin{array}{c}X \\ Y\end{array} \right)$ならば、$P_{Z}$は$X・Y$の同時確率分布であるといわれ、$P_{Z}$の密度は$X・Y$の同時確率密度と呼ばれる。もし、$X・Y$
-が密度$p_{x},p_{y}$持ち、独立ならば、同時確率密度は$p_{x}p_{y}$で書くことができる。$\\ $
-\ この考え方は、確率変数がいくつかあるときにも拡張できる。$Z$が、$X_{1},\ldots,X_{n}$から生成されているとする。このとき、$Z$の分布や密度は、$X_{1},\ldots,X_{n}$からなる同時確率密度・同時確率分布となる。
+これは、$P_{Z}$が確率密度$p_{X}(x)p_{Y}(y)$を持つことを表している。この本では、$\mu,\nu$は一般的に数え上げ測度かルベーグ測度である。ここでの概論では、二つの確率変数が片方絶対連続・片方離散の場合も考えられている。
+\ もし、$Z = \left(\begin{array}{c}X \\ Y\end{array} \right)$ならば、$P_{Z}$は$X・Y$の同時確率分布であるといわれ、$P_{Z}$の確率密度は$X・Y$の同時確率確率密度と呼ばれる。もし、$X・Y$
+が確率密度$p_{X}(x),p_{Y}(y)$持ち、独立ならば、同時確率確率密度は$p_{X}(x)p_{Y}(y)$で書くことができる。$\\ $
+\ この考え方は、確率変数がいくつかあるときにも拡張できる。$Z$が、$X_{1},\ldots,X_{n}$から生成されているとする。このとき、$Z$の分布や確率密度は、$X_{1},\ldots,X_{n}$からなる同時確率確率密度・同時確率分布となる。
 もし、確率変数ベクトル$X_{1},\ldots,X_{n}$が独立ならば、ボレル集合$B_{1},\ldots,B_{n}$に対して
 \begin{align*}
-P(X_{1} \in B_{1},\ldots,X_{n}\in B_{n}) = P(X_{1} \in B_{1})×\cdots × P(X_{n} \in B_{n})
+P(X_{1} \in B_{1},\ldots,X_{n}\in B_{n}) = P(X_{1} \in B_{1})\times\cdots \times P(X_{n} \in B_{n})
 \end{align*}
-となる。また以下の一意な測度$\mu$に対して以下が成り立つことから、$P_{Z} = P_{X_{1}} × \cdots × P_{X_{n}}$となる。
+となる。また以下の一意な測度$\mu$に対して以下が成り立つことから、$P_{Z} = P_{X_{1}} \times \cdots \times P_{X_{n}}$となる。
 \begin{align*}
-\mu(B_{1} × \cdots × B_{n} ) = P_{X_{1}}(B_{1}) × \cdots × P_{X_{n}}(B_{n})
+\mu(B_{1} \times \cdots \times B_{n} ) = P_{X_{1}}(B_{1}) \times \cdots \times P_{X_{n}}(B_{n})
 \end{align*}
 \ 以下の命題は、独立な変数の関数は独立になることを示している。
-\begin{enumerate}[label = 命題1.\*arabic]
+\begin{enumerate}[label = 命題1.\arabic*]
 \setcounter{enumi}{18}
 \item $X_{1},\ldots,X_{n}$を独立な確率変数とする。そして、$f_{1},\ldots,f_{n}$を可測関数とする。このとき、$f_{1}(X_{1}) \ldots f_{n}(x_{n})$は独立である。
 \end{enumerate}
-\ もし、$X_{i}$が測度$\mu_{i}$に対して密度$p_{X_{i}}$を持つならば、$X_{1},\ldots,X_{n}$は$\mu = \mu_{1}×\cdots × \mu_{n}$に対して同時確率密度$p$を持ち、
+\ もし、$X_{i}$が測度$\mu_{i}$に対して確率密度$p_{X_{i}}$を持つならば、$X_{1},\ldots,X_{n}$は$\mu = \mu_{1}\times\cdots \times \mu_{n}$に対して同時確率確率密度$p$を持ち、
 \begin{align*}
-p(x_{1},\ldots,x_{n}) = p_{X_{1}}(x_{1})×\cdots × p_{X_{n}}(x_{n})
+p(x_{1},\ldots,x_{n}) = p_{X_{1}}(x_{1})\times\cdots \times p_{X_{n}}(x_{n})
 \end{align*}
 となる。もし、$X_{i} \; (i = 1,2,\ldots,n)$が独立同一に$X_{i} \sim Q$となるなら、$X_{1},X_{2},\ldots,X_{n}$は独立同一分布(i.i.d.)と呼ばれ、確率変数の列は、$Q$からの乱数と呼ばれる。
 \subsection{条件付確率分布}
 \ $X$と$Y$が確率変数ベクトルであるとする。もし、$X$が観測され、$X=x$であるとわかったとする。このとき$P_{Y}$は、与えられた$Y$のみの分布関数と見ることはできない。$P_{Y}$に$X=x$が与えられたという情報を加味して
 修正しなければならない。もし、$X$が離散なら条件付確率の式を使って分布関数を求めることができる。つまり、条件付確率分布は、$p_{X}(x) = P(X = x)$と確率関数が与えられるとき、$X$が起こりえる値の集合$\mathcal{X}_{0} = \{x : p_{X}(x) > 0\}$をとると
-ボレル集合$B$と$c \in \mathcal{X}_{0}$に対して以下のように定義できる。
+ボレル集合$B$と$x \in \mathcal{X}_{0}$に対して以下のように定義できる。
 \begin{align}
 \label{x}
 Q_{x}(B) = P(Y \in B | X = x) = \frac{P(Y \in B,X = x)}{P(X = x)}
 \end{align}
-このとき、$x \in \mathcal{X}_{0}$に対して$Q_{x}$は確率密度となる。また、$X=x$が与えられた下での$Y$の分布関数と呼ばれる。$\\ $
-\ 形式的に、条件付確率は確率的transition-kernelとなる。この確率的transition-kernelの定義は$Q : \mathcal{X} × \mathcal{B} \rightarrow [0,1]$が以下の二つの条件を満たすことである。
+このとき、$x \in \mathcal{X}_{0}$に対して$Q_{x}$は確率測度となる。また、$X=x$が与えられた下での$Y$の分布関数と呼ばれる。$\\ $
+\ 形式的に、条件付確率は確率的transition-kernelとなる。この確率的transition-kernelの定義は$Q : \mathcal{X} \times \mathcal{B} \rightarrow [0,1]$が以下の二つの条件を満たすことである。
 一つ目は$x \in \mathcal{X}$について$Q_{x}(・)$は$\mathcal{B}$上で確率測度となることである。二つ目は$B \in \mathcal{B}$に対して、$Q_{x}(B)$は$x$上の可測関数となることである。$\\ $
 \ 完備な空間では、$x \notin \mathcal{X}_{0}$に対しても条件付分布を定義できる。どうしてそうなるかは大した問題でもない。なぜなら、$Q_{x}$を$x \notin \mathcal{X}_{0}$に対してある一定の確率測度を取るようにしたものも一つの確率となるからである。$\\ $
 \ 条件付分布は、$X$が離散でなくても存在する。しかし、定め方は技術が必要で、6章で定めるものとは違う。しかしこの章で大事なのは、$X$が離散かそうでないかということである。特に、$X,Y$が独立で$X$が離散なら、$x$に関係なく$Q_{x} = P_{Y}$となる。
@@ -455,9 +459,9 @@ Q_{x}(B) = P(Y \in B | X = x) = \frac{P(Y \in B,X = x)}{P(X = x)}
 \label{y}
 E[f(X,Y)|X = x] = \int f(x,y)dQ_{x}(y)
 \end{align}
-もし、$X,Y$どちらも$Y$に対して離散で、$Y$は可算集合$\mathcal{Y}_{0}$上、$X$は$\mathcal{X}_{0}$上で定義されているとする。このとき、$Z = \left(\begin{array}{c}X \\ Y\end{array} \right)$は可算集合$\mathcal{X_{0}}×\mathcal{Y_{0}}$上で定義され、
-離散となり、確率関数は$p_{Z}(z) = P(Z = z) = P(X = x,Y =y) \; (z = \left(\begin{array}{c}x \\ y\end{array} \right))$となる。また、式(\ref{x})から$Q_{x}(matncal{Y}_{0}) = 1$となる。
-また、$Q_{x}$は離散で$x \in \mathcal{X}_{0}$確率関数は以下で定義される。
+もし、$X,Y$どちらも$Y$に対して離散で、$Y$は可算集合$\mathcal{Y}_{0}$上、$X$は$\mathcal{X}_{0}$上で定義されているとする。このとき、$Z = \left(\begin{array}{c}X \\ Y\end{array} \right)$は可算集合$\mathcal{X}_{0}\times\mathcal{Y}_{0}$上で定義され、
+離散となり、確率関数は$p_{Z}(z) = P(Z = z) = P(X = x,Y =y) \; (z = \left(\begin{array}{c}x \\ y\end{array} \right))$となる。また、式(\ref{x})から$Q_{x}(\mathcal{Y}_{0}) = 1$となる。
+また、$Q_{x}$は離散で$x \in \mathcal{X}_{0}$に対し確率関数は以下で定義される。
 \begin{align}
 \label{v}
 q_{x}(y) = Q_{x}({y}) = P(Y = y|X=x) = \frac{P(Y = y,X = x)}{P(X=x)}
@@ -468,9 +472,9 @@ H(x) = E[f(X,Y) | X = x] = \sum_{y \in \mathcal{Y}_{0}}f(x,y)q_{x}(y)
 \end{align*}
 となる。今後$E[|f(X,Y)|] < \infty$を仮定する。式(\ref{v})で$P(X = x,Y = y) = q_{x}(y)p_{X}(x)$と示されていることから、$f(X,Y)$の期待値は以下のように書ける。
 \begin{align*}
-E[F(X,Y)] &= \sum_{\left(\begin{array}{c}x \\ y \end{array}\right) \in \mathcal{X}_{0}×\mathcal{Y}_{0}} f(x,y)P(X = x,Y = y) \\
+E[F(X,Y)] &= \sum_{\left(\begin{array}{c}x \\ y \end{array}\right) \in \mathcal{X}_{0}\times\mathcal{Y}_{0}}f(x,y)P(X = x,Y = y) \\
           &= \sum_{x\in \mathcal{X}_{0}}\sum_{y \in \mathcal{Y}_{0}}f(x,y)q_{x}(y)p_{X}(x) \\
-          &= \sum_{x \in \mathcal{X}_{0}}H(x)p_{X}(x)
+          &= \sum_{x \in \mathcal{X}_{0}}H(x)p_{X}(x) \\
           &= E[H(X)]
 \end{align*}
 この式は、条件付問題の基本的な式であり、全確率の法則等で呼ばれる。実際、この性質は$X$が離散でない場合でも条件付確率や期待値を定義するのに使うほど基本的な事項である。
